@@ -2,78 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
-  margin: 0;
-  line-height: normal;
+  @apply leading-[normal] m-0;
 }
-:root {
-  /* fonts */
-  --font-lexend-deca: "Lexend Deca";
-  --font-dm-serif-display: "DM Serif Display";
-
-  /* font sizes */
-  --font-size-xl: 20px;
-  --font-size-base: 16px;
-  --font-size-13xl: 32px;
-  --font-size-lgi: 19px;
-  --font-size-7xl: 26px;
-  --font-size-5xl: 24px;
-  --font-size-29xl: 48px;
-  --font-size-19xl: 38px;
-  --font-size-10xl: 29px;
-  --font-size-45xl: 64px;
-  --font-size-32xl: 51px;
-
-  /* Colors */
-  --color-whitesmoke: #eeedeb;
-  --color-coral: #e46935;
-  --color-white: #fff;
-  --color-darkslategray: #2f3645;
-  --color-gray-100: #939185;
-  --color-gray-200: #1c1b1f;
-  --color-chocolate: #df6633;
-  --color-tan: #e6b9a6;
-
-  /* Gaps */
-  --gap-xs: 12px;
-  --gap-29xl: 48px;
-  --gap-5xl: 24px;
-  --gap-lgi: 19px;
-  --gap-7xs: 6px;
-  --gap-19xl: 38px;
-  --gap-17xl: 36px;
-  --gap-lg: 18px;
-  --gap-5xs: 8px;
-  --gap-9xs: 4px;
-  --gap-6xl: 25px;
-  --gap-10xl-2: 29.2px;
-  --gap-xl: 20px;
-  --gap-3xs-4: 9.4px;
-  --gap-3xs-5: 9.5px;
-  --gap-4xs-3: 8.3px;
-
-  /* Paddings */
-  --padding-12xs: 1px;
-  --padding-mini: 15px;
-  --padding-11xs: 2px;
-  --padding-lg-5: 18.5px;
-  --padding-34xl: 53px;
-  --padding-7xs: 6px;
-  --padding-xl: 20px;
-  --padding-9xs: 4px;
-  --padding-smi: 13px;
-  --padding-5xs: 8px;
-  --padding-3xl: 22px;
-  --padding-lgi: 19px;
-  --padding-8xs: 5px;
-  --padding-122xl: 141px;
-  --padding-10xs: 3px;
-  --padding-2xs: 11px;
-  --padding-3xs: 10px;
-  --padding-416xl: 435px;
-  --padding-165xl: 184px;
-  --padding-264xl: 283px;
-  --padding-xs: 12px;
-  --padding-288xl: 307px;
-  --padding-181xl: 200px;
+*,
+::before,
+::after {
+  border-width: 0;
 }

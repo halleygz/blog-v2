@@ -1,29 +1,50 @@
 import { Button } from "@mui/material";
 import PropTypes from "prop-types";
-import styles from "./InputFields.module.css";
 
 const InputFields = ({ className = "" }) => {
   return (
-    <form className={[styles.inputFields, className].join(" ")}>
-      <div className={styles.inputLabels}>
-        <div className={styles.enterYourFull}>Enter Your full Name</div>
-        <input className={styles.inputType} type="text" />
+    <form
+      className={`m-0 self-stretch flex flex-col items-start justify-start gap-[29.2px] max-w-full ${className}`}
+    >
+      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-px pl-0 gap-[8.3px]">
+        <div className="w-[312.1px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
+          Enter Your full Name
+        </div>
+        <input
+          className="[outline:none] bg-[transparent] self-stretch h-[67.6px] relative box-border min-w-[250px] border-[1px] border-solid border-gray-100"
+          type="text"
+        />
       </div>
-      <div className={styles.inputLabels1}>
-        <div className={styles.enterYourEmail}>Enter Your Email</div>
-        <input className={styles.inputLabelsChild} type="text" />
+      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-px pl-0 gap-[9.5px]">
+        <div className="w-[249.4px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
+          Enter Your Email
+        </div>
+        <input
+          className="[outline:none] bg-[transparent] self-stretch h-[67.6px] relative box-border min-w-[250px] border-[1px] border-solid border-gray-100"
+          type="text"
+        />
       </div>
-      <div className={styles.inputLabels2}>
-        <div className={styles.enterPassword}>Enter Password</div>
-        <input className={styles.inputLabelsItem} type="text" />
+      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-px pl-0 gap-[9.4px]">
+        <div className="w-[233.4px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
+          Enter Password
+        </div>
+        <input
+          className="[outline:none] bg-[transparent] self-stretch h-[67.6px] relative box-border min-w-[250px] border-[1px] border-solid border-gray-100"
+          type="text"
+        />
       </div>
-      <div className={styles.inputLabels3}>
-        <div className={styles.confirmPassword}>Confirm Password</div>
-        <input className={styles.inputLabelsInner} type="text" />
+      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-px pl-0 gap-[9.4px]">
+        <div className="w-[276.1px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
+          Confirm Password
+        </div>
+        <input
+          className="[outline:none] bg-[transparent] self-stretch h-[67.6px] relative box-border min-w-[250px] border-[1px] border-solid border-gray-100"
+          type="text"
+        />
       </div>
-      <div className={styles.buttonContainer}>
+      <div className="self-stretch flex flex-row items-start justify-between max-w-full gap-[20px] mq850:flex-wrap">
         <Button
-          className={styles.signupButton}
+          className="h-[67.6px] w-[240.1px]"
           disableElevation
           variant="contained"
           sx={{
@@ -40,9 +61,9 @@ const InputFields = ({ className = "" }) => {
         >
           SIGNUP
         </Button>
-        <div className={styles.alreadyHaveAnContainer}>
-          <p className={styles.alreadyHaveAn}>{`already have an account? `}</p>
-          <p className={styles.logIn}>log-in</p>
+        <div className="h-[56.3px] w-[342.8px] relative text-xl font-lexend-deca text-left inline-block shrink-0 max-w-full mq450:text-base">
+          <p className="m-0 text-darkslategray">{`already have an account? `}</p>
+          <p className="m-0 text-tan">log-in</p>
         </div>
       </div>
     </form>
