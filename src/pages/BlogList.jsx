@@ -1,59 +1,20 @@
-import { Button } from "@mui/material";
 import Header from "../components/Header";
-import FeedItem from "../components/FeedItem";
+import Feed from "../components/Feed";
 import FeedTitle from "../components/FeedTitle";
 
 const BlogList = () => {
   return (
-    <div className="w-full relative bg-whitesmoke overflow-y-auto flex flex-row flex-wrap items-start justify-start pt-px px-[15px] pb-0.5 box-border gap-[51.5px] leading-[normal] tracking-[normal] mq750:gap-[26px]">
-      <div className="h-[1125px] w-[81.5px] flex flex-row items-end justify-start gap-[14.5px]">
-        <div className="h-[801px] flex-1 flex flex-col items-start justify-start">
-          <Header />
-        </div>
-        <div className="self-stretch w-px relative box-border border-r-[1px] border-solid border-gray-100" />
+    <div className="w-full h-[832px] relative bg-whitesmoke overflow-y-auto flex flex-row items-start justify-start pt-px px-[15px] pb-[157px] box-border gap-[14.5px] leading-[normal] tracking-[normal] mq700:pl-[14.5px] mq700:pr-[14.5px] mq700:box-border mq900:h-auto">
+      <div className="w-[66px] flex flex-col items-start justify-start pt-[170px] px-0 pb-0 box-border mq700:hidden mq700:pt-[110px] mq700:box-border">
+        <Header />
       </div>
-      <main className="w-[1497px] flex flex-col items-start justify-start pt-[69px] px-0 pb-0 box-border max-w-full mq1050:pt-[45px] mq1050:box-border mq750:pt-[29px] mq750:box-border">
-        <section className="self-stretch flex flex-col items-start justify-start gap-[12px] max-w-full">
-          <FeedItem />
-          <div className="w-[500px] flex flex-row items-start justify-center pt-0 px-5 pb-[31px] box-border max-w-full">
-            <div className="w-[260px] flex flex-row items-start justify-start gap-[16px]">
-              <Button
-                className="h-[30px] w-[116px]"
-                disableElevation
-                variant="outlined"
-                sx={{
-                  textTransform: "none",
-                  color: "#e46935",
-                  fontSize: "13",
-                  borderColor: "#e46935",
-                  borderRadius: "100px",
-                  "&:hover": { borderColor: "#e46935" },
-                  width: 116,
-                  height: 30,
-                }}
-              >
-                #meditation
-              </Button>
-              <Button
-                className="h-[30px] flex-1"
-                disableElevation
-                variant="outlined"
-                sx={{
-                  textTransform: "none",
-                  color: "#e46935",
-                  fontSize: "13",
-                  borderColor: "#e46935",
-                  borderRadius: "100px",
-                  "&:hover": { borderColor: "#e46935" },
-                  height: 30,
-                }}
-              >
-                #mentalpeace
-              </Button>
-            </div>
-          </div>
+      <div className="h-[1125px] flex flex-col items-start justify-start py-0 pr-[37px] pl-0 box-border mq700:hidden">
+        <div className="w-px flex-1 relative box-border border-r-[1px] border-solid border-gray-100" />
+      </div>
+      <main className="w-[1094px] flex flex-col items-start justify-start pt-[69px] px-0 pb-0 box-border max-w-[calc(100%_-_133px)] shrink-0 mq700:pt-[45px] mq700:box-border mq700:max-w-full">
+        <section className="self-stretch flex flex-col items-start justify-start gap-[43px] max-w-full mq700:gap-[21px]">
+          <Feed />
           <FeedTitle prop="24" />
-          <FeedTitle prop="23" propMinHeight="unset" />
         </section>
       </main>
     </div>
