@@ -1,0 +1,171 @@
+.enterYourFull {
+  width: 312.1px;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 300;
+  font-family: var(--font-lexend-deca);
+  color: var(--color-darkslategray);
+  text-align: left;
+  display: inline-block;
+}
+.inputType {
+  border: 1px solid var(--color-gray-100);
+  outline: 0;
+  background-color: transparent;
+  align-self: stretch;
+  height: 67.6px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+.inputLabels {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 0;
+  gap: var(--gap-4xs-3);
+}
+.enterYourEmail {
+  width: 249.4px;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 300;
+  font-family: var(--font-lexend-deca);
+  color: var(--color-darkslategray);
+  text-align: left;
+  display: inline-block;
+}
+.inputLabelsChild {
+  border: 1px solid var(--color-gray-100);
+  outline: 0;
+  background-color: transparent;
+  align-self: stretch;
+  height: 67.6px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+.inputLabels1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 0;
+  gap: var(--gap-3xs-5);
+}
+.enterPassword {
+  width: 233.4px;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 300;
+  font-family: var(--font-lexend-deca);
+  color: var(--color-darkslategray);
+  text-align: left;
+  display: inline-block;
+}
+.inputLabelsItem {
+  border: 1px solid var(--color-gray-100);
+  outline: 0;
+  background-color: transparent;
+  align-self: stretch;
+  height: 67.6px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+.inputLabels2 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 0;
+  gap: var(--gap-3xs-4);
+}
+.confirmPassword {
+  width: 276.1px;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 300;
+  font-family: var(--font-lexend-deca);
+  color: var(--color-darkslategray);
+  text-align: left;
+  display: inline-block;
+}
+.inputLabelsInner {
+  border: 1px solid var(--color-gray-100);
+  outline: 0;
+  background-color: transparent;
+  align-self: stretch;
+  height: 67.6px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+.inputLabels3 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 0;
+  gap: var(--gap-3xs-4);
+}
+.signupButton {
+  height: 67.6px;
+  width: 240.1px;
+}
+.alreadyHaveAn,
+.logIn {
+  margin: 0;
+  color: var(--color-darkslategray);
+}
+.logIn {
+  color: var(--color-tan);
+}
+.alreadyHaveAnContainer {
+  height: 56.3px;
+  width: 342.8px;
+  position: relative;
+  font-size: var(--font-size-xl);
+  font-family: var(--font-lexend-deca);
+  text-align: left;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.buttonContainer,
+.inputFields {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: var(--gap-xl);
+}
+.inputFields {
+  margin: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-10xl-2);
+}
+@media screen and (max-width: 850px) {
+  .buttonContainer {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 450px) {
+  .confirmPassword,
+  .enterPassword,
+  .enterYourEmail,
+  .enterYourFull {
+    font-size: var(--font-size-lgi);
+  }
+  .alreadyHaveAnContainer {
+    font-size: var(--font-size-base);
+  }
+}

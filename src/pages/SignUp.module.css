@@ -1,0 +1,108 @@
+.welcome {
+  margin: 0;
+  width: 280.2px;
+  position: relative;
+  font-size: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+}
+.letsSignYou {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 300;
+  font-family: var(--font-lexend-deca);
+  color: #a5a5a5;
+}
+.signupForm,
+.welcomeMessage {
+  flex-direction: column;
+  max-width: 100%;
+}
+.welcomeMessage {
+  width: 420.7px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-xl) 0 0;
+  box-sizing: border-box;
+  gap: 5.8px;
+}
+.signupForm {
+  align-self: stretch;
+  gap: 59.6px;
+}
+.content,
+.signup,
+.signupForm {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.content {
+  width: 801.6px;
+  flex-direction: column;
+  padding: 175px 0 0;
+  box-sizing: border-box;
+  min-width: 801.6px;
+  max-width: 100%;
+}
+.signup {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  flex-direction: row;
+  gap: 191.4px;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--font-size-29xl);
+  color: var(--color-darkslategray);
+  font-family: var(--font-dm-serif-display);
+}
+@media screen and (max-width: 1525px) {
+  .content {
+    flex: 1;
+  }
+  .signup {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1225px) {
+  .content {
+    padding-top: 114px;
+    box-sizing: border-box;
+  }
+  .signup {
+    gap: 96px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .welcome {
+    font-size: var(--font-size-19xl);
+  }
+  .content {
+    padding-top: 74px;
+    box-sizing: border-box;
+    min-width: 100%;
+  }
+  .signup {
+    gap: var(--gap-29xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .welcome {
+    font-size: var(--font-size-10xl);
+  }
+  .letsSignYou {
+    font-size: var(--font-size-lgi);
+  }
+  .signupForm {
+    gap: 30px;
+  }
+  .signup {
+    gap: var(--gap-5xl);
+  }
+}
