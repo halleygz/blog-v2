@@ -12,7 +12,7 @@ const InputFields = ({ className = "" }) => {
     <form
       className={`m-0 self-stretch flex flex-col items-start justify-start gap-[29.3px] ${className}`}
     >
-      <div className="self-stretch flex flex-col items-start justify-start pt-0 pb-[9.5px] pr-7 pl-0 gap-[4.4px]">
+      <div className="self-stretch flex flex-col items-start justify-start pt-0 pb-[9.5px] pr-[13px] pl-0 gap-[4.4px]">
         <div className="w-[216px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
           Enter Your Email
         </div>
@@ -28,7 +28,7 @@ const InputFields = ({ className = "" }) => {
           }}
         />
       </div>
-      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-7 pl-0 gap-[5.1px]">
+      <div className="self-stretch flex flex-col items-start justify-start py-0 pr-[13px] pl-0 gap-[5.1px]">
         <div className="w-[231px] relative text-5xl font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi">
           Enter Password
         </div>
@@ -63,10 +63,10 @@ const InputFields = ({ className = "" }) => {
         >
           Login
         </Button>
-        <div className="w-[273px] flex flex-col items-start justify-start pt-[9.8px] px-0 pb-0 box-border">
+        <div className="w-[245px] flex flex-col items-start justify-start pt-[9.8px] px-0 pb-0 box-border">
           <div className="self-stretch relative text-xl font-lexend-deca text-left">
-            <p className="m-0 text-darkslategray">{`already have an account? `}</p>
-            <p className="m-0 text-tan">log-in</p>
+            <p className="m-0 text-darkslategray">{`don’t have an account? `}</p>
+            <p className="m-0 text-tan">Signup</p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const FeedDesktop = ({ className = "" }) => {
   return (
     <div
-      className={`self-stretch flex flex-row flex-wrap items-start justify-center gap-[38px] max-w-full text-right text-13xl text-gray-200 font-lexend-deca mq700:gap-[19px] ${className}`}
+      className={`self-stretch flex flex-row items-start justify-center gap-[38px] max-w-full text-right text-13xl text-gray-200 font-lexend-deca mq900:flex-wrap mq700:gap-[19px] ${className}`}
     >
       <div className="h-[209px] w-[73px] flex flex-col items-start justify-start pt-2 px-0 pb-0 box-border">
         <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[8px]">
