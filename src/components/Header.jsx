@@ -1,4 +1,4 @@
-import FeedItem from "./FeedItem";
+import Feed from "./Feed";
 import PropTypes from "prop-types";
 
 const Header = ({ className = "" }) => {
@@ -13,19 +13,21 @@ const Header = ({ className = "" }) => {
         </h1>
       </div>
       <div className="self-stretch flex flex-row items-start justify-end py-0 pr-[3px] pl-[11px]">
-        <FeedItem />
-      </div>
-      <div className="flex flex-col items-start justify-start pt-0 px-0 pb-[141px]">
-        <div className="flex flex-row items-start justify-start py-0 px-[13px]">
-          <img
-            className="h-10 w-10 relative"
-            loading="lazy"
-            alt=""
-            src="/trending-up.svg"
-          />
+        <div className="flex-1 flex flex-col items-start justify-start">
+          <div className="flex flex-row items-start justify-start py-0 pr-2.5 pl-0.5">
+            <img
+              className="h-10 w-10 relative"
+              loading="lazy"
+              alt=""
+              src="/search.svg"
+            />
+          </div>
+          <a className="[text-decoration:none] relative text-[inherit] inline-block min-w-[52px]">
+            search
+          </a>
         </div>
-        <div className="relative inline-block min-w-[66px] z-[1]">trending</div>
       </div>
+      <Feed />
       <div className="self-stretch flex flex-row items-start justify-end py-0 px-2">
         <div className="flex-1 flex flex-col items-start justify-start">
           <div className="flex flex-row items-start justify-start py-0 px-[5px]">

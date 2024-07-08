@@ -6,9 +6,11 @@ import {
   useLocation,
 } from "react-router-dom";
 import SignUp from "./pages/SignUp";
-import BlogPost from "./pages/BlogPost";
 import BlogList from "./pages/BlogList";
 import Login from "./pages/Login";
+import BlogPost from "./pages/BlogPost";
+import Home from "./pages/Home";
+import AddBlog from "./pages/AddBlog";
 
 function App() {
   const action = useNavigationType();
@@ -30,15 +32,23 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/blogpost":
-        title = "";
-        metaDescription = "";
-        break;
       case "/bloglist":
         title = "";
         metaDescription = "";
         break;
       case "/login":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/blogpost":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/home":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/addblog":
         title = "";
         metaDescription = "";
         break;
@@ -61,9 +71,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SignUp />} />
-      <Route path="/blogpost" element={<BlogPost />} />
       <Route path="/bloglist" element={<BlogList />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/blogpost" element={<BlogPost />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/addblog" element={<AddBlog />} />
     </Routes>
   );
 }
