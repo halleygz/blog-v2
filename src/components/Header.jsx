@@ -2,6 +2,20 @@ import Feed from "./Feed";
 import PropTypes from "prop-types";
 
 const Header = ({ className = "" }) => {
+  const navigate = useNavigate();
+
+  const onGroupContainerClick = useCallback(() => {
+    // Please sync "search" to the project
+  }, []);
+
+  const onGroupContainerClick1 = useCallback(() => {
+    // Please sync "trending-list" to the project
+  }, []);
+
+  const onAddClick = useCallback(() => {
+    navigate("/addblog");
+  }, [navigate]);
+
   return (
     <nav
       className={`m-0 self-stretch flex flex-col items-end justify-start gap-[25px] text-left text-base text-darkslategray font-lexend-deca ${className}`}
