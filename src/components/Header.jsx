@@ -1,4 +1,5 @@
-import Feed from "./Feed";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Header = ({ className = "" }) => {
@@ -41,7 +42,6 @@ const Header = ({ className = "" }) => {
           </a>
         </div>
       </div>
-      <Feed />
       <div className="self-stretch flex flex-row items-start justify-end py-0 px-2">
         <div className="flex-1 flex flex-col items-start justify-start">
           <div className="flex flex-row items-start justify-start py-0 px-[5px]">
