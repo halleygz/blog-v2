@@ -5,19 +5,6 @@ const FeedDesktop = ({ className = "" }) => {
     <div
       className={`self-stretch flex flex-row items-start justify-center gap-[38px] max-w-full text-right text-13xl text-gray-200 font-lexend-deca mq900:flex-wrap mq700:gap-[19px] ${className}`}
     >
-      <div className="h-[209px] w-[73px] flex flex-col items-start justify-start pt-2 px-0 pb-0 box-border">
-        <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[8px]">
-          <div className="self-stretch relative font-semibold mq900:text-7xl mq450:text-lgi">
-            <p className="m-0">27</p>
-            <p className="m-0">MAY</p>
-          </div>
-          <div className="self-stretch flex-1 flex flex-row items-start justify-start py-0 pr-0 pl-[53px] text-left text-base">
-            <div className="h-5 w-[113px] relative font-light inline-block [transform:_rotate(-90deg)] shrink-0">
-              @samurai2099
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="flex-1 flex flex-col items-start justify-start gap-[19px] min-w-[639px] max-w-full text-left text-chocolate font-dm-serif-display mq900:min-w-full">
         <h1 className="m-0 self-stretch relative text-inherit font-normal font-inherit mq900:text-7xl mq450:text-lgi">
           15 Disadvantages Of Freedom And How You Can Workaround It.

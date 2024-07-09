@@ -1,4 +1,3 @@
-
 const InputFields = ({ content, name, id, type }) => {
   return (
       <div className="self-stretch flex flex-col items-start justify-start py-0 pr-4 pl-0 gap-[4.4px]">
