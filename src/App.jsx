@@ -5,11 +5,14 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import SignUp from "./pages/SignUp";
 import BlogList from "./pages/BlogList";
+import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import BlogPost from "./pages/BlogPost";
 import Home from "./pages/Home";
+import Details from "./pages/Details";
+import Search from "./pages/Search";
+import TrendingList from "./pages/TrendingList";
+import BlogPost from "./pages/BlogPost";
 import AddBlog from "./pages/AddBlog";
 
 function App() {
@@ -32,7 +35,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/bloglist":
+      case "/signup":
         title = "";
         metaDescription = "";
         break;
@@ -40,11 +43,23 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/blogpost":
+      case "/home":
         title = "";
         metaDescription = "";
         break;
-      case "/home":
+      case "/details":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/search":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/trendinglist":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/blogpost":
         title = "";
         metaDescription = "";
         break;
@@ -70,11 +85,14 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<SignUp />} />
-      <Route path="/bloglist" element={<BlogList />} />
+      <Route path="/" element={<BlogList />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/blogpost" element={<BlogPost />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/details" element={<Details />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/trendinglist" element={<TrendingList />} />
+      <Route path="/blogpost" element={<BlogPost />} />
       <Route path="/addblog" element={<AddBlog />} />
     </Routes>
   );
