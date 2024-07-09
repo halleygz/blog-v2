@@ -5,52 +5,37 @@ module.exports = {
     extend: {
       colors: {
         whitesmoke: "#eeedeb",
-        coral: "#e46935",
-        palegreen: "rgba(110, 235, 131, 0)",
-        forestgreen: "rgba(59, 184, 79, 0)",
-        chocolate: {
-          "100": "#df6633",
-          "200": "#cc4f1c",
-        },
-        white: "#fff",
+        tan: "#e6b9a6",
+        darkslategray: "#2f3645",
         gray: {
           "100": "#939185",
           "200": "#1c1b1f",
         },
-        tan: "#e6b9a6",
-        black: "#000",
-        darkslategray: "#2f3645",
         darkgray: "#a5a5a5",
-        gainsboro: "#e8e7e7",
-        orangered: "#f9601f",
+        coral: "#e46935",
+        white: "#fff",
+        chocolate: "#df6633",
+        black: "#000",
       },
       spacing: {},
       fontFamily: {
         "lexend-deca": "'Lexend Deca'",
         "dm-serif-display": "'DM Serif Display'",
       },
-      borderRadius: {
-        "81xl": "100px",
-        "3xs": "10px",
-      },
     },
     fontSize: {
-      smi: "13px",
       xl: "20px",
       base: "16px",
-      "13xl": "32px",
-      "7xl": "26px",
-      lgi: "19px",
-      xs: "12px",
       "5xl": "24px",
+      lgi: "19px",
       "29xl": "48px",
       "10xl": "29px",
       "19xl": "38px",
       "45xl": "64px",
       "32xl": "51px",
+      "13xl": "32px",
+      "7xl": "26px",
       "11xl": "30px",
-      "9xl": "28px",
-      "3xl": "22px",
       inherit: "inherit",
     },
     screens: {
@@ -63,14 +48,17 @@ module.exports = {
       mq1050: {
         raw: "screen and (max-width: 1050px)",
       },
-      mq975: {
-        raw: "screen and (max-width: 975px)",
+      mq1000: {
+        raw: "screen and (max-width: 1000px)",
       },
-      mq950: {
-        raw: "screen and (max-width: 950px)",
+      mq900: {
+        raw: "screen and (max-width: 900px)",
       },
       mq750: {
         raw: "screen and (max-width: 750px)",
+      },
+      mq725: {
+        raw: "screen and (max-width: 725px)",
       },
       mq700: {
         raw: "screen and (max-width: 700px)",

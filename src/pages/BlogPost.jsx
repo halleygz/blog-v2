@@ -1,62 +1,45 @@
-import MainContent from "../components/MainContent";
-
 const BlogPost = () => {
   return (
-    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-col items-start justify-start pt-[67px] px-[227px] pb-[45px] box-border gap-[22.9px] leading-[normal] tracking-[normal] text-left text-13xl text-darkslategray font-lexend-deca mq450:pl-5 mq450:pr-5 mq450:box-border mq700:pl-[113px] mq700:pr-[113px] mq700:box-border">
-      <section className="w-[774.6px] flex flex-col items-start justify-start gap-[23px] max-w-full shrink-0 text-left text-[40px] text-coral font-dm-serif-display">
-        <h1 className="m-0 self-stretch relative text-inherit font-normal font-inherit mq450:text-5xl mq950:text-13xl">
-          15 Disadvantages Of Freedom And How You Can Workaround It.
-        </h1>
-        <div className="w-[309.5px] flex flex-col items-start justify-start gap-[11.8px] text-xl text-gray-100 font-lexend-deca">
-          <div className="self-stretch relative font-extralight mq450:text-base">
-            written by @samurai2099
-          </div>
-          <div className="w-[192.8px] h-[36.8px] relative font-extralight inline-block shrink-0 mq450:text-base">
-            on 27 may 2022
-          </div>
-        </div>
+    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-col items-start justify-start pt-[67px] pb-[18.5px] pr-5 pl-[227px] box-border gap-[22.9px] leading-[normal] tracking-[normal] text-left text-xl text-gray-100 font-lexend-deca mq450:pl-5 mq450:box-border mq725:pl-14 mq725:box-border mq1050:pl-[113px] mq1050:box-border">
+      <section className="w-[774.6px] relative text-[40px] font-dm-serif-display text-coral text-left inline-block max-w-full mq450:text-5xl mq1000:text-13xl">
+        15 Disadvantages Of Freedom And How You Can Workaround It.
       </section>
-      <MainContent />
-      <div className="w-[813.5px] flex flex-row items-start justify-start pt-0 px-0.5 pb-[29.3px] box-border max-w-full shrink-0">
-        <div className="flex-1 flex flex-col items-end justify-start gap-[21.1px] max-w-full shrink-0">
-          <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
-            <div className="h-[66px] w-[66px] relative">
-              <div className="absolute top-[0px] left-[0px] rounded-[50%] bg-tan w-full h-full" />
-              <h2 className="m-0 absolute top-[13px] left-[23px] text-inherit font-normal font-inherit inline-block min-w-[20px] z-[1] mq450:text-lgi mq950:text-7xl">
-                S
-              </h2>
-            </div>
-            <div className="flex-1 flex flex-col items-start justify-start pt-[13px] px-0 pb-0 box-border min-w-[462px] max-w-full text-xl text-gray-200 mq975:min-w-full">
-              <div
-                className="self-stretch relative mq450:text-base"
-                data-scroll-to="enimQuisVarius"
-              >
-                enim. Quis varius quam quisque id diam vel quam. Duis at tellus
-                at urna condimentum mattis
-              </div>
-            </div>
-          </div>
-          <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
+      <div className="w-[309.5px] flex flex-col items-start justify-start gap-[11.8px]">
+        <div className="self-stretch relative font-extralight mq450:text-base">
+          written by @samurai2099
+        </div>
+        <div className="w-[192.8px] h-[36.8px] relative font-extralight inline-block shrink-0 mq450:text-base">
+          on 27 may 2022
         </div>
       </div>
-      <section className="w-[813.5px] flex flex-row items-start justify-start py-0 px-0.5 box-border max-w-full shrink-0 text-left text-13xl text-darkslategray font-lexend-deca">
-        <div className="flex-1 flex flex-col items-end justify-start gap-[21px] max-w-full">
-          <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
-            <div className="h-[66px] w-[66px] relative">
-              <div className="absolute top-[0px] left-[0px] rounded-[50%] bg-tan w-full h-full" />
-              <h2 className="m-0 absolute top-[13px] left-[21px] text-inherit font-normal font-inherit z-[1] mq450:text-lgi mq950:text-7xl">
-                H
-              </h2>
-            </div>
-            <div className="flex-1 flex flex-col items-start justify-start pt-[13px] px-0 pb-0 box-border min-w-[462px] max-w-full text-xl text-gray-200 mq975:min-w-full">
-              <div className="self-stretch relative mq450:text-base">
-                enim. Quis varius quam quisque id diam vel quam. Duis at tellus
-                at urna condimentum mattis
-              </div>
-            </div>
-          </div>
-          <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gray-100" />
-        </div>
+      <section className="w-[802px] h-[519px] relative font-lexend-deca text-gray-200 text-left inline-block shrink-0 max-w-full text-xl mq450:text-base">
+        <p className="m-0">
+          <span className="text-45xl">L</span>
+          <span>
+            orem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus
+            venenatis lectus magna fringilla urna. Aliquet porttitor lacus
+            luctus accumsan tortor posuere ac ut. Eleifend quam adipiscing vitae
+            proin sagittis nisl rhoncus. Faucibus ornare suspendisse sed nisi
+            lacus sed viverra tellus. Urna molestie at elementum eu facilisis
+            sed odio morbi. Eget mi proin sed libero enim. Quis varius quam
+            quisque id diam vel quam. Duis at tellus at urna condimentum mattis
+            pellentesque. Nulla facilisi cras fermentum odio eu feugiat pretium
+            nibh.
+          </span>
+        </p>
+        <p className="m-0">&nbsp;</p>
+        <p className="m-0">
+          Ut tellus elementum sagittis vitae et leo. Cursus in hac habitasse
+          platea dictumst quisque sagittis purus. Odio facilisis mauris sit
+          amet. Quis vel eros donec ac odio. Orci a scelerisque purus semper.
+          Amet justo donec enim diam vulputate ut pharetra. Arcu odio ut sem
+          nulla pharetra diam sit amet nisl. Sapien eget mi proin sed libero
+          enim. Nunc sed blandit libero volutpat sed cras ornare arcu dui. Neque
+          viverra justo nec ultrices dui sapien eget mi.
+        </p>
+        <p className="m-0">&nbsp;</p>
+        <p className="m-0">{`Cras semper auctor neque vitae tempus quam pellentesque nec nam. Vitae tortor condimentum lacinia quis vel eros donec ac. Consectetur adipiscing elit pellentesque habitant morbi. `}</p>
       </section>
     </div>
   );
