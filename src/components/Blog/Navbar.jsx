@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Header = ({ className = "", profile }) => {
+const Navbar = ({ className = "", profile }) => {
   const navigate = useNavigate();
 
   const onGroupContainerClick = useCallback(() => {
@@ -59,8 +59,8 @@ const Header = ({ className = "", profile }) => {
   );
 };
 
-Header.propTypes = {
+Navbar.propTypes = {
   className: PropTypes.string,
 };
 
-export default Header;
+export default Navbar;

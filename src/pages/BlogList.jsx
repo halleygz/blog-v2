@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Button } from "@mui/material";
-import Header from "../components/Blog/Header";
+import Header from "../components/Blog/Navbar";
 import { useNavigate } from "react-router-dom";
 import FeedDesktop from "../components/Blog/FeedDesktop";
 
