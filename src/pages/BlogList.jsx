@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import Header from "../components/Blog/Navbar";
 import { useNavigate } from "react-router-dom";
 import FeedDesktop from "../components/Blog/FeedDesktop";
+import TagBtns from "../components/Blog/TagBtns";
 
 const BlogList = () => {
   const navigate = useNavigate();
@@ -37,56 +38,16 @@ const BlogList = () => {
           </div>
           <div
             className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer"
-            onClick={onFrameContainerClick}
+            
           >
             <FeedDesktop />
-            <div className="ml-[-5px] w-[364.1px] flex flex-row items-start justify-start py-0 pr-5 pl-0 box-border gap-[12.1px] max-w-full mq450:flex-wrap">
-              <div
-                className="w-[118.2px] flex flex-row items-start justify-start p-2.5 box-border min-w-[77px] cursor-pointer"
-                onClick={onFrameContainerClick1}
-              >
-                <button className="cursor-pointer py-[5px] pr-[9px] pl-[11px] bg-palegreen flex-1 rounded-[100px] flex flex-row items-start justify-start whitespace-nowrap border-[1px] border-solid border-coral hover:bg-forestgreen hover:box-border hover:border-[1px] hover:border-solid hover:border-chocolate-200">
-                  <div className="relative text-[13px] font-medium font-lexend-deca text-coral text-left inline-block min-w-[76px]">
-                    Post Details
-                  </div>
-                </button>
-              </div>
-              <div className="w-[100.8px] flex flex-col items-start justify-start pt-2.5 px-0 pb-0 box-border">
-                <Button
-                  className="self-stretch h-[30px]"
-                  disableElevation
-                  variant="outlined"
-                  sx={{
-                    textTransform: "none",
-                    color: "#e46935",
-                    fontSize: "13",
-                    borderColor: "#e46935",
-                    borderRadius: "100px",
-                    "&:hover": { borderColor: "#e46935" },
-                    height: 30,
-                  }}
-                >
-                  #Freedom
-                </Button>
-              </div>
-              <div className="w-[100.8px] flex flex-col items-start justify-start pt-2.5 px-0 pb-0 box-border">
-                <Button
-                  className="self-stretch h-[30px]"
-                  disableElevation
-                  variant="outlined"
-                  sx={{
-                    textTransform: "none",
-                    color: "#e46935",
-                    fontSize: "13",
-                    borderColor: "#e46935",
-                    borderRadius: "100px",
-                    "&:hover": { borderColor: "#e46935" },
-                    height: 30,
-                  }}
-                >
-                  #Peace
-                </Button>
-              </div>
+            <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
+              
+              <TagBtns content="#Something"/>
+              <TagBtns content="#and there"/>
+              <TagBtns content="post details"/>
+
+              
             </div>
           </div>
         </div>

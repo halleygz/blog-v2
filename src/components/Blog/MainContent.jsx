@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Buttons from "../Tools/Buttons";
-import {InputFields} from "../Tools/InputFields";
+import { InputFields } from "../Tools/InputFields";
 import TagBtns from "./TagBtns";
 
 const MainContent = ({ className = "" }) => {
@@ -50,44 +50,12 @@ const MainContent = ({ className = "" }) => {
         </p>
       </div>
       <div className="w-[296px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
-        <div className="flex-1 flex flex-row items-start justify-start gap-[44px] mq450:gap-[22px]">
-          <TagBtns content="#sometuig" clickAct={onTagClick}/>
-          <Button
-            className="h-[30px] flex-[0.619] cursor-pointer"
-            disableElevation
-            variant="outlined"
-            sx={{
-              textTransform: "none",
-              color: "#e46935",
-              fontSize: "13",
-              borderColor: "#e46935",
-              borderRadius: "100px",
-              "&:hover": { borderColor: "#e46935" },
-              height: 30,
-            }}
-            onClick={onTagClick}
-          >
-            Like
-          </Button>
-          <Button
-            className="h-[30px] flex-1 cursor-pointer"
-            disableElevation
-            variant="outlined"
-            sx={{
-              textTransform: "none",
-              color: "#e46935",
-              fontSize: "13",
-              borderColor: "#e46935",
-              borderRadius: "100px",
-              "&:hover": { borderColor: "#e46935" },
-              height: 30,
-            }}
-            onClick={onTagClick}
-          >
-            Dislike
-          </Button>
-        </div>
+        <TagBtns content="#sometuig" clickAct={onTagClick} />
+        <TagBtns content="another" clickAct={onTagClick} />
+        <TagBtns content="#sdquaaa" clickAct={onTagClick} />
+        <TagBtns content="#sometuig" clickAct={onTagClick} />
       </div>
+
       <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
         <InputFields
           content="Comment"
