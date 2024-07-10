@@ -5,7 +5,7 @@ const BlogPost = () => {
   return (
     <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-col items-start justify-start pt-[67px] px-[227px] pb-[45px] box-border gap-[22.9px] leading-[normal] tracking-[normal] text-left text-13xl text-darkslategray font-lexend-deca mq450:pl-5 mq450:pr-5 mq450:box-border mq700:pl-[113px] mq700:pr-[113px] mq700:box-border">
       
-      <MainContent className={1+1} />
+      <MainContent/>
       <div className="w-[813.5px] flex flex-row items-start justify-start pt-0 px-0.5 pb-[29.3px] box-border max-w-full shrink-0">
         <div className="flex-1 flex flex-col items-end justify-start gap-[21.1px] max-w-full shrink-0">
           <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
