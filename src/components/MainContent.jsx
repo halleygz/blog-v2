@@ -1,7 +1,10 @@
 import { useCallback } from "react";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import Buttons from "./Buttons";
+import InputFields from "./InputFields";
+import TagBtns from "./TagBtns";
 
 const MainContent = ({ className = "" }) => {
   const navigate = useNavigate();
@@ -48,6 +51,7 @@ const MainContent = ({ className = "" }) => {
       </div>
       <div className="w-[296px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
         <div className="flex-1 flex flex-row items-start justify-start gap-[44px] mq450:gap-[22px]">
+          <TagBtns content="#sometuig" clickAct={onTagClick}/>
           <Button
             className="h-[30px] flex-[0.619] cursor-pointer"
             disableElevation
@@ -85,34 +89,14 @@ const MainContent = ({ className = "" }) => {
         </div>
       </div>
       <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
-        <div className="relative font-light inline-block min-w-[117px] mq450:text-lgi">
-          Comment
-        </div>
-        <textarea
-          className="bg-[transparent] h-[280px] w-auto [outline:none] self-stretch relative box-border border-[1px] border-solid border-gray-100"
-          rows={14}
-          cols={40}
+        <InputFields
+          content="Comment"
+          name="comment"
+          id="comment"
+          type="text"
         />
       </div>
-      <Button
-        className="w-[172.2px] h-[56.8px] cursor-pointer"
-        disableElevation
-        variant="contained"
-        sx={{
-          textTransform: "none",
-          color: "#2f3645",
-          fontSize: "20",
-          background: "#939185",
-          border: "#939185 solid 1px",
-          borderRadius: "0px 0px 0px 0px",
-          "&:hover": { background: "#939185" },
-          width: 172.2,
-          height: 56.8,
-        }}
-        onClick={onSubmitbtnClick}
-      >
-        Comment
-      </Button>
+      <Buttons content="Comment" bgcolor="#939185" links="blogpost" />
     </section>
   );
 };
