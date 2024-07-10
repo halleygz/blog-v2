@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 
 //make sure it recieves the content as props
 const FeedDesktop = ({ className = "", content="" }) => {
@@ -33,8 +31,6 @@ const FeedDesktop = ({ className = "", content="" }) => {
   );
 };
 
-FeedDesktop.propTypes = {
-  className: PropTypes.string,
-};
+
 
 export default FeedDesktop;

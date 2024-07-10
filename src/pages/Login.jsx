@@ -3,6 +3,7 @@ import {InputFields} from "../components/Tools/InputFields";
 import SideJumb from "../components/Tools/SideJumb";
 
 const Login = () => {
+  
   return (
     <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[119px] leading-[normal] tracking-[normal] text-left text-45xl text-darkslategray font-lexend-deca mq1125:flex-wrap mq1125:gap-[59px] mq750:gap-[30px]">
       <SideJumb content="Login"/>

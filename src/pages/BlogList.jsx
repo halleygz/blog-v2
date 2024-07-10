@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Button } from "@mui/material";
-import Header from "../components/Blog/Navbar";
+import Navbar from "../components/Blog/Navbar";
 import { useNavigate } from "react-router-dom";
 import FeedDesktop from "../components/Blog/FeedDesktop";
 import TagBtns from "../components/Blog/TagBtns";
@@ -17,14 +17,10 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div className="w-full relative bg-whitesmoke overflow-y-auto flex flex-row flex-wrap items-start justify-start pt-0 px-[15px] pb-2 box-border gap-[92.5px] leading-[normal] tracking-[normal] mq1125:gap-[46px] mq750:gap-[23px]">
-      <div className="h-[824px] w-[81.5px] flex flex-row items-start justify-start gap-[14.5px]">
-        <div className="flex-1 flex flex-col items-start justify-start pt-[171px] px-0 pb-0 mq750:pt-[111px] mq750:box-border">
-          <Header profile="S"/>
-        </div>
-        <div className="self-stretch w-px relative box-border border-r-[1px] border-solid border-gray-100" />
-      </div>
-      <section className="w-[950px] flex flex-col items-start justify-start pt-[66px] px-0 pb-0 box-border max-w-full text-left text-xl text-gray-200 font-lexend-deca mq450:pt-[43px] mq450:box-border">
+    <div className="w-full relative bg-whitesmoke overflow-y-auto flex flex-col items-start justify-start pt-4 pb-[373px] pr-[34px] pl-9 box-border gap-[35px] leading-[normal] tracking-[normal] text-left text-xl text-gray-200 font-lexend-deca mq675:gap-[17px]">
+      <Navbar profile="S"/>
+      
+      <section className="self-stretch flex flex-row items-start justify-center py-0 pr-0 pl-[34px] box-border max-w-full mt-10">
         <div className="self-stretch flex flex-col items-start justify-start gap-[35px] max-w-full mq750:gap-[17px]">
           <div className="flex flex-row items-start justify-start py-0 px-[9px]">
             <div className="flex flex-col items-start justify-start gap-[4px]">

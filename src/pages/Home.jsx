@@ -49,7 +49,7 @@ const Home = () => {
           </h2>
           <div className="self-stretch flex flex-row items-start justify-center py-0 pr-[21px] pl-5 text-left text-xl">
             <div className="bg-tan flex flex-row items-start justify-start py-4 px-[69px] whitespace-nowrap mq450:pl-5 mq450:pr-5 mq450:box-border">
-              <div className="relative font-medium">SignUp to read</div>
+              <div className="relative font-medium">SignUp today</div>
             </div>
           </div>
         </div>
