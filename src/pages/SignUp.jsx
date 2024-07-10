@@ -1,6 +1,6 @@
-import SideJumb from "../components/SideJumb";
-import InputFields from "../components/InputFields";
-import Buttons from "../components/Buttons";
+import SideJumb from "../components/Tools/SideJumb";
+import {InputFields} from "../components/Tools/InputFields";
+import Buttons from "../components/Tools/Buttons";
 
 const SignUp = () => {
   return (

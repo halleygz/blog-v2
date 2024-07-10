@@ -1,4 +1,4 @@
-import MainContent from "../components/MainContent";
+import MainContent from "../components/Blog/MainContent";
 
 const BlogPost = () => {
   return (

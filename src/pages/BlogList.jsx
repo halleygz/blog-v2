@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { Button } from "@mui/material";
-import Header from "../components/Header";
+import Header from "../components/Blog/Header";
 import { useNavigate } from "react-router-dom";
-import FeedDesktop from "../components/FeedDesktop";
+import FeedDesktop from "../components/Blog/FeedDesktop";
 
 const BlogList = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const BlogList = () => {
     <div className="w-full relative bg-whitesmoke overflow-y-auto flex flex-row flex-wrap items-start justify-start pt-0 px-[15px] pb-2 box-border gap-[92.5px] leading-[normal] tracking-[normal] mq1125:gap-[46px] mq750:gap-[23px]">
       <div className="h-[824px] w-[81.5px] flex flex-row items-start justify-start gap-[14.5px]">
         <div className="flex-1 flex flex-col items-start justify-start pt-[171px] px-0 pb-0 mq750:pt-[111px] mq750:box-border">
-          <Header />
+          <Header profile="S"/>
         </div>
         <div className="self-stretch w-px relative box-border border-r-[1px] border-solid border-gray-100" />
       </div>

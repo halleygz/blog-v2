@@ -1,6 +1,6 @@
-import Buttons from "../components/Buttons";
-import InputFields from "../components/InputFields";
-import SideJumb from "../components/SideJumb";
+import Buttons from "../components/Tools/Buttons";
+import {InputFields} from "../components/Tools/InputFields";
+import SideJumb from "../components/Tools/SideJumb";
 
 const Login = () => {
   return (

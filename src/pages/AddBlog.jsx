@@ -5,7 +5,8 @@ import {
   IconButton,
   Button,
 } from "@mui/material";
-import SideJumb from "../components/SideJumb";
+import SideJumb from "../components/Tools/SideJumb";
+import { TextArea } from "../components/Tools/InputFields";
 
 const AddBlog = () => {
   return (
@@ -34,16 +35,7 @@ const AddBlog = () => {
               }}
             />
           </div>
-          <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-2 gap-[4px]">
-            <div className="w-[269.6px] relative leading-[22.7px] font-light inline-block mq450:text-lgi mq450:leading-[18px]">
-              Content
-            </div>
-            <textarea
-              className="bg-[transparent] h-[253.3px] w-auto [outline:none] self-stretch relative box-border border-[1px] border-solid border-gray-100"
-              rows={13}
-              cols={34}
-            />
-          </div>
+          <TextArea content="Content"/>
           <div className="self-stretch flex flex-row items-start justify-start pt-0 px-0 pb-[34.2px] box-border gap-[20.3px] max-w-full mq750:flex-wrap">
             <Button
               className="h-[46.8px] w-[162.7px]"

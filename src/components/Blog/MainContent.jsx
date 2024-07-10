@@ -2,8 +2,8 @@ import { useCallback } from "react";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import Buttons from "./Buttons";
-import InputFields from "./InputFields";
+import Buttons from "../Tools/Buttons";
+import {InputFields} from "../Tools/InputFields";
 import TagBtns from "./TagBtns";
 
 const MainContent = ({ className = "" }) => {
