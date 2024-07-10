@@ -5,16 +5,13 @@ import {
   IconButton,
   Button,
 } from "@mui/material";
+import SideJumb from "../components/Tools/SideJumb";
+import { TextArea } from "../components/Tools/InputFields";
 
 const AddBlog = () => {
   return (
     <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
-      <div className="w-[450px] bg-tan flex flex-row items-start justify-start py-[336px] px-14 box-border min-w-[450px] max-w-full lg:flex-1 mq450:pl-5 mq450:pr-5 mq450:box-border mq750:pt-[218px] mq750:pb-[218px] mq750:box-border mq750:min-w-full">
-        <h1 className="m-0 flex-1 relative text-inherit font-bold font-inherit inline-block max-w-full mq450:text-19xl mq1050:text-32xl">
-          <p className="m-0">{`Try `}</p>
-          <p className="m-0">Buddy</p>
-        </h1>
-      </div>
+      <SideJumb content="Try Buddy"/>
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         <div className="self-stretch flex flex-col items-start justify-start gap-[13px] max-w-full">
           <div className="self-stretch flex flex-row items-start justify-start py-0 px-12 box-border max-w-full text-center text-29xl font-dm-serif-display mq750:pl-6 mq750:pr-6 mq750:box-border">
@@ -38,16 +35,7 @@ const AddBlog = () => {
               }}
             />
           </div>
-          <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-2 gap-[4px]">
-            <div className="w-[269.6px] relative leading-[22.7px] font-light inline-block mq450:text-lgi mq450:leading-[18px]">
-              Content
-            </div>
-            <textarea
-              className="bg-[transparent] h-[253.3px] w-auto [outline:none] self-stretch relative box-border border-[1px] border-solid border-gray-100"
-              rows={13}
-              cols={34}
-            />
-          </div>
+          <TextArea content="Content"/>
           <div className="self-stretch flex flex-row items-start justify-start pt-0 px-0 pb-[34.2px] box-border gap-[20.3px] max-w-full mq750:flex-wrap">
             <Button
               className="h-[46.8px] w-[162.7px]"
