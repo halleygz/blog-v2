@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 
-const FeedDesktop = ({ className = "" }) => {
+
+//make sure it recieves the content as props
+const FeedDesktop = ({ className = "", content="" }) => {
   return (
     <div
       className={`self-stretch flex flex-row items-start justify-center gap-[38px] max-w-full text-right text-13xl text-gray-200 font-lexend-deca mq900:flex-wrap mq700:gap-[19px] ${className}`}
