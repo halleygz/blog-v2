@@ -1,13 +1,14 @@
 
-const Profile = ({ className = "" }) => {
+const Profile = ({ className = "", firstLetter="H" }) => {
   return (
     <div
-      className={`h-[66px] w-[66px] relative text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
+      className={`h-[66px] w-[66px] text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
     >
-      <div className="absolute top-[0px] left-[0px] rounded-[50%] bg-tan w-full h-full" />
-      <a className="[text-decoration:none] absolute top-[13px] left-[23px] text-[inherit] inline-block min-w-[20px] whitespace-nowrap z-[1]">
-        S
+      <div className="flex justify-center text-center items-center rounded-[50%] bg-tan w-full h-full">
+      <a className="[text-decoration:none] text-[inherit] min-w-[20px] whitespace-nowrap">
+        {firstLetter}
       </a>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import Profile from "./Profile";
 import { Button } from "@mui/material";
 
-const Navbar = ({ className = "", profile }) => {
+const Navbar = ({ className = ""}) => {
 
   return (
     <nav
       className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
     >
-      <Profile />
+      <Profile firstLetter="P"/>
       <div className="w-[493px] flex flex-col items-start justify-start pt-[11px] px-0 pb-0 box-border max-w-full text-base">
         <div className="self-stretch flex flex-row items-start justify-between gap-[20px]">
           <div className="flex flex-col items-start justify-start pt-3 px-0 pb-0">
