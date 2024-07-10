@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 
 const SideJumb = ({ className = "", content }) => {
   return (
@@ -12,8 +11,5 @@ const SideJumb = ({ className = "", content }) => {
   );
 };
 
-SideJumb.propTypes = {
-  className: PropTypes.string,
-};
 
 export default SideJumb;
