@@ -7,4 +7,5 @@ export default defineConfig({
     outDir: "build",
   },
   plugins: [react()],
+  envPrefix: "VITE_"
 });

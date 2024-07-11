@@ -24,9 +24,7 @@ const MainContent = ({ className = "" }) => {
       >
         <div className="self-stretch h-[369px] relative inline-block shrink-0 mq450:text-base">
           <p className="m-0">
-            <span className="text-45xl">L</span>
-            <span>
-              orem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus
               venenatis lectus magna fringilla urna. Aliquet porttitor lacus
               luctus accumsan tortor posuere ac ut. Eleifend quam adipiscing
@@ -36,9 +34,9 @@ const MainContent = ({ className = "" }) => {
               varius quam quisque id diam vel quam. Duis at tellus at urna
               condimentum mattis pellentesque. Nulla facilisi cras fermentum
               odio eu feugiat pretium nibh.
-            </span>
+            
           </p>
-          <p className="m-0">&nbsp;</p>
+          <br />
           <p className="m-0">
             Ut tellus elementum sagittis vitae et leo. Cursus in hac habitasse
             platea dictumst quisque sagittis purus. Odio facilisis mauris sit

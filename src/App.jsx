@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import BlogPost from "./pages/BlogPost";
 import Home from "./pages/Home";
 import AddBlog from "./pages/AddBlog";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const action = useNavigationType();
@@ -69,14 +70,16 @@ function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/bloglist" element={<BlogList />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/blogpost" element={<BlogPost />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/addblog" element={<AddBlog />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/bloglist" element={<BlogList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/blogpost" element={<BlogPost />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/addblog" element={<AddBlog />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 export default App;
