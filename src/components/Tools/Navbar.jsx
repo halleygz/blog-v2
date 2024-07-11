@@ -2,7 +2,7 @@ import Buttons from "./Buttons";
 import Profile from "./Profile";
 import { Button } from "@mui/material";
 
-const Navbar = ({ className = "", fLetter = "", loggedState }) => {
+const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
   return (
     <nav
       className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
@@ -33,8 +33,17 @@ const Navbar = ({ className = "", fLetter = "", loggedState }) => {
                   </a>
                 </div>
               </div>
-              <Buttons content="Log Out" bgcolor="#e6b9a6"
-              />
+
+              <button
+                className={`h-12 w-[167.7px] text-2xl text-[#2f3645] font-normal rounded-none`}
+                style={{
+                  backgroundColor: "#e6b9a6",
+                  border: `1px solid #e6b9a6`,
+                }}
+                onClick={logout}
+              >
+                Log Out
+              </button>
             </>
           ) : (
             <>
@@ -43,8 +52,7 @@ const Navbar = ({ className = "", fLetter = "", loggedState }) => {
                   Login
                 </a>
               </div>
-              <Buttons content="Sign Up" bgcolor="#e6b9a6"
-              />
+              <Buttons content="Sign Up" bgcolor="#e6b9a6" />
             </>
           )}
         </div>
