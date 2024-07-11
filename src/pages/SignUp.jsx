@@ -58,7 +58,6 @@ const SignUp = () => {
             <h1 className="text-4xl font-bold text-darkslategray">Welcome</h1>
             <p className="mt-2 text-lg text-gray-600">Let’s sign you up quickly</p>
           </div>
-          {currentUser.email}
           {err && <div className="text-red-500">{err}</div>}
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm space-y-4">
