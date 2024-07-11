@@ -4,11 +4,11 @@ import { auth } from '../firebase'
 
 const AuthContext = React.createContext()
 
-export function useAuth(){
+ function useAuth(){
     return useContext(AuthContext)
 }
 
-export function AuthProvider({children}) {
+ function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
@@ -19,6 +19,10 @@ export function AuthProvider({children}) {
 
     function login(email, password){
         return auth.signInWithEmailAndPassword(email, password)
+    }
+
+    function logout(){
+        return auth.signOut()
     }
 
     useEffect(()=> {
@@ -35,6 +39,7 @@ export function AuthProvider({children}) {
         currentUser,
         signup,
         login,
+        logout,
     }
   return (
     <AuthContext.Provider value={value}>
@@ -43,3 +48,4 @@ export function AuthProvider({children}) {
   )
 }
 
+export {AuthProvider, useAuth}

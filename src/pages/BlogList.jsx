@@ -2,8 +2,8 @@ import Navbar from "../components/Tools/Navbar";
 import FeedDesktop from "../components/Blog/FeedDesktop";
 import TagBtns from "../components/Blog/TagBtns";
 
-const BlogList = () => {
-  const data = {
+const BlogList = ({data, getMeOut}) => {
+  const contentData = {
     title: "15 Disadvantages Of Freedom And How You Can Workaround It.",
     displayContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -16,7 +16,7 @@ const BlogList = () => {
 
   return (
     <div className="w-full relative bg-whitesmoke overflow-y-auto flex flex-col items-start justify-start pt-4 pb-[373px] pr-[34px] pl-9 box-border gap-[35px] leading-[normal] tracking-[normal] text-left text-xl text-gray-200 font-lexend-deca mq675:gap-[17px]">
-      <Navbar profile="S" />
+      <Navbar loggedState={data.isLoggedIn} fLetter={data?.currentUser?.email[0]} logout={getMeOut}/>
 
       <section className="self-stretch flex flex-row items-start justify-center py-0 pr-0 pl-[34px] box-border max-w-full mt-10">
         <div className="self-stretch flex flex-col items-start justify-start gap-[35px] max-w-full mq750:gap-[17px]">
@@ -31,7 +31,7 @@ const BlogList = () => {
             </div>
           </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
-            <FeedDesktop content={{...data}} />
+            <FeedDesktop content={{...contentData}} />
             <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
               <TagBtns content="#Something" />
               <TagBtns content="#and there" />
