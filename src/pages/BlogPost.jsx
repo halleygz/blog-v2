@@ -1,13 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import MainContent from "../components/Blog/MainContent";
 import Navbar from "../components/Tools/Navbar";
 import Profile from "../components/Tools/Profile";
 
 const BlogPost = ({ data, getMeOut }) => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
+
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Navbar
-        loggedState={data.isLoggedIn}
-        fLetter={data?.currentUser?.email[0]}
+        loggedState={currentUser}
+        fLetter={currentUser?.email[0]}
         logout={getMeOut}
         className="bg-whitesmoke pt-5 pl-5 pr-5"
       />
