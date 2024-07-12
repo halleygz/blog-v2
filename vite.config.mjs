@@ -6,6 +6,9 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
+  server: {
+    port: process.env.PORT || 3000
+  },
   plugins: [react()],
   envPrefix: "VITE_"
 });
