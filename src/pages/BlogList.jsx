@@ -1,13 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Tools/Navbar";
 import FeedDesktop from "../components/Blog/FeedDesktop";
 import TagBtns from "../components/Blog/TagBtns";
 import { useAuth } from "../contexts/AuthContext";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const BlogList = ({ getMeOut }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const [data, setData] = useState([])
+
+
+  useEffect(()=>{
+    const getDataFromFirebase = async () =>{
+      const querySnapshot = await getDocs(collection(db,'blogs'))
+      const docsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))  
+      setData(docsData)
+      console.log(querySnapshot)
+    }
+    getDataFromFirebase()
+  },[])
 
   useEffect(() => {
     if (!currentUser) {
@@ -21,7 +35,7 @@ const BlogList = ({ getMeOut }) => {
 
   const contentData = {
     title: "15 Disadvantages Of Freedom And How You Can Workaround It.",
-    displayContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    snippetContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad t mollit anim id est laborum tion ullamco laboris nisi ut
               aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -46,14 +60,27 @@ const BlogList = ({ getMeOut }) => {
               </a>
             </div>
           </div>
+
           <div className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
-            <FeedDesktop content={{ ...contentData }} />
+            <FeedDesktop contentData={{ ...contentData }} />
             <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
               <TagBtns content="#Something" />
               <TagBtns content="#and there" />
               <TagBtns content="post details" />
             </div>
           </div>
+          {data.map((item) => (
+          <div key={item.id} className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
+            <FeedDesktop contentData={{ ...item }} />
+            <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
+              {item.tags.map((tag)=>(
+              <TagBtns  content={tag} />
+              ))}
+              <TagBtns content="post details" />
+            </div>
+          </div>
+
+          ))}
         </div>
       </section>
     </div>

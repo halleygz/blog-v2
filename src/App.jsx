@@ -53,7 +53,7 @@ function AppRoutes() {
       />
       <Route path="/login" element={<Login />} />
       <Route
-        path="/blogpost"
+        path="/blogpost/:id"
         element={
         <PrivateRoute>
           <BlogPost data={data} getMeOut={handleLogout} />

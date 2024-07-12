@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { getFirestore, collection} from 'firebase/firestore'
 
 const app = firebase.initializeApp({
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -11,5 +12,7 @@ const app = firebase.initializeApp({
 });
 
 const auth = app.auth();
-
-export { auth, app };
+const db = getFirestore(app)
+const userCollection = collection(db, 'users')
+const blogCollection = collection(db, 'blogs')
+export { auth, app, db, blogCollection, userCollection };

@@ -1,11 +1,30 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MainContent from "../components/Blog/MainContent";
 import Navbar from "../components/Tools/Navbar";
 import Profile from "../components/Tools/Profile";
-
+import {useAuth} from '../contexts/AuthContext'
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 const BlogPost = ({ data, getMeOut }) => {
+  const {id} = useParams()
+  const [blog, setBlog] = useState({})
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  
+  useEffect(()=>{
+    const fetchBlog = async () => {
+      const docRef = doc(db, 'blogs', id)
+      const docSnap = await getDoc(docRef)
+
+      if(docSnap.exists()){
+        setBlog({id:docSnap.id, ...docSnap.data()})
+      } else {
+        console.log('No such document')
+      }
+    }
+    fetchBlog()
+  }, [id])
 
   useEffect(() => {
     if (!currentUser) {
@@ -25,7 +44,7 @@ const BlogPost = ({ data, getMeOut }) => {
         className="bg-whitesmoke pt-5 pl-5 pr-5"
       />
       <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-col items-start justify-start pt-[67px] px-[227px] pb-[45px] box-border gap-[22.9px] leading-[normal] tracking-[normal] text-left text-13xl text-darkslategray font-lexend-deca mq450:pl-5 mq450:pr-5 mq450:box-border mq700:pl-[113px] mq700:pr-[113px] mq700:box-border">
-        <MainContent />
+        <MainContent blogD={blog}/>
         <div className="w-[813.5px] flex flex-row items-start justify-start pt-0 px-0.5 pb-[29.3px] box-border max-w-full shrink-0">
           <div className="flex-1 flex flex-col items-end justify-start gap-[21.1px] max-w-full shrink-0">
             <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
