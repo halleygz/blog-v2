@@ -3,7 +3,7 @@ import { InputFields } from "../components/Tools/InputFields";
 import Buttons from "../components/Tools/Buttons";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [newSignUp, setNewSignUp] = useState({
@@ -26,6 +26,7 @@ const SignUp = () => {
 
   const { fullName, email, password, confirmPass } = newSignUp;
   const { signup, currentUser } = useAuth();
+  const navigate = useNavigate()
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -40,6 +41,11 @@ const SignUp = () => {
       setErr('');
       setLoading(true);
       await signup(email, password);
+
+      setTimeout(()=> {
+        navigate('/')
+      }, 1000)
+
     } catch (error) {
       setErr('Failed to create account');
       console.error(error);

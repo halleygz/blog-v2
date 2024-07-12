@@ -2,7 +2,7 @@ import { useState } from "react";
 import Buttons from "../components/Tools/Buttons";
 import {InputFields} from "../components/Tools/InputFields";
 import SideJumb from "../components/Tools/SideJumb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const Login = () => {
@@ -24,6 +24,8 @@ const Login = () => {
 
   const {email, password} = newLogin
   const {login, currentUser} = useAuth()
+  const navigate = useNavigate()
+
 
   async function handleSubmit(event){
     event.preventDefault()
@@ -32,6 +34,7 @@ const Login = () => {
       setErr('')
       setLoading(true)
       await login(email, password)
+      navigate('/')
     } catch (error){
       setErr('Incorrect cridentials')
       console.log(error)
@@ -78,7 +81,7 @@ const Login = () => {
               />
             </div>
             <div className="flex justify-between items-center mt-6">
-              <Buttons content="Login" bgcolor="#939185" links="bloglist"
+              <Buttons content="Login" bgcolor="#939185"
               isLoading={loading}
               />
               <div className="text-gray-600 text-sm">

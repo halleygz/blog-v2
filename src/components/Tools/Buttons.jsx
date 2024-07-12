@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Buttons = ({ content, bgcolor, isLoading }) => {
+const Buttons = ({ content, bgcolor, isLoading, onClick }) => {
   
   const load = toString(isLoading)
 
@@ -11,6 +11,7 @@ const Buttons = ({ content, bgcolor, isLoading }) => {
         backgroundColor: bgcolor,
         border: `1px solid ${bgcolor}`,
       }}
+      onClick={onClick}
       disabled={!load}
     >
         {content}
