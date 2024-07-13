@@ -115,6 +115,7 @@ const SignUp = () => {
                 type="text"
                 placeholder="@username"
                 className="w-full p-2 border border-gray-300 rounded-md"
+                required
               />
               <InputFields
                 content="Enter your password"

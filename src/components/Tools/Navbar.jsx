@@ -5,7 +5,7 @@ import Profile from "./Profile";
 const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
   return (
     <nav
-      className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
+      className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca shadow-2xl ${className}`}
     >
       {loggedState ? <Profile firstLetter={fLetter.toUpperCase()} /> : "Blogga"}
       <div className="w-[493px] flex flex-col items-start justify-start pt-[11px] px-0 pb-0 box-border max-w-full text-base">
@@ -46,19 +46,17 @@ const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
               </button>
             </>
           ) : (
-            <>
-              <div className="flex flex-col items-start justify-start pt-3 px-0 pb-0">
-                <Link
-                  className="[text-decoration:none] relative text-[inherit] inline-block min-w-[44px]"
-                  to="/login"
-                >
-                  Login
+            <div className="inline mx-auto">
+              <span className="m-5">
+                <Link to="/login">
+                  <Buttons content="Login" bgcolor="#e6b9a6" />
                 </Link>
-              </div>
-              <Link to="/signup">
-                <Buttons content="Sign Up" bgcolor="#e6b9a6" />
-              </Link>
-            </>
+               </span> 
+                <Link to="/signup">
+                  <Buttons content="Sign Up" bgcolor="#e6b9a6" />
+                </Link>
+              
+            </div>
           )}
         </div>
       </div>
