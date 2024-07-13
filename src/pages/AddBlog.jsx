@@ -1,15 +1,15 @@
-// src/pages/AddBlog.js
 import { TextField } from "@mui/material";
 import SideJumb from "../components/Tools/SideJumb";
 import Buttons from "../components/Tools/Buttons";
 import FroalaEditor from "react-froala-wysiwyg";
 import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import MarkdownPreview from "@uiw/react-markdown-preview";
-import { blogCollection, db } from "../firebase";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { blogCollection, userCollection } from "../firebase";
+import { collection, addDoc, onSnapshot, query, getDocs, where, getDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const AddBlog = () => {
   const [model, setModel] = useState("");
@@ -17,10 +17,26 @@ const AddBlog = () => {
   const [user, setUser] = useState({ username: "@halle" }); // replace with actual user state
   const [blog, setBlog] = useState([]);
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  
+  const getUserName = useCallback(async () => {
+    const q1 = query(userCollection, where('email', "==", currentUser.email));
+    const querySnapshot1 = await getDocs(q1);
+    if (!querySnapshot1.empty) {
+      const userDoc = querySnapshot1.docs[0];
+      const userData = userDoc.data();
+      setUser({ username: userData.username });
+    }
+  }, [currentUser.email]);
 
-  // unsubscribeer
   useEffect(() => {
-    const unsubscribe = onSnapshot(blogCollection, function (snapshot) {
+    if (currentUser) {
+      getUserName();
+    }
+  }, [currentUser, getUserName]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(blogCollection, (snapshot) => {
       const blogArr = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -30,13 +46,7 @@ const AddBlog = () => {
     return unsubscribe;
   }, []);
 
-  // updateBlog
-  // async function updateBlog(markdown) {
-  //   const docRef = doc(db, 'blogs', )
-  // }
-
-  // create note
-  async function createNewBlog() {
+  const createNewBlog = useCallback(async () => {
     const newBlog = {
       author: user.username,
       createdAt: Date.now(),
@@ -50,14 +60,14 @@ const AddBlog = () => {
     };
 
     try {
-      const newBlogRef = await addDoc(collection(db, "blogs"), newBlog);
+      const newBlogRef = await addDoc(blogCollection, newBlog);
       navigate("/bloglist");
       console.log("Document written with ID: ", newBlogRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-  }
-
+  }, [user.username, title, model, navigate]);
+  
   return (
     <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
       {/* <SideJumb content="Try Buddy"/> */}
@@ -87,26 +97,24 @@ const AddBlog = () => {
             />
           </div>
           <div className="w-full">
-            <FroalaEditor model={model} onModelChange={(e) => setModel(e)} />
+            <FroalaEditor model={model} onModelChange={setModel} />
             <MarkdownPreview
               source={model}
               style={{ background: "transparent", color: "black" }}
             />
           </div>
-            <label
-              htmlFor="tags"
-              className="w-[275.5px] relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
-            >
-              Enter tags
-            </label>
-            <input
-              className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
-              type="text"
-              id="tags"
-              name="tags"
-              // value={value}
-              // onChange={onChange}
-            />
+          <label
+            htmlFor="tags"
+            className="w-[275.5px] relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px] min-w-[117px]"
+          >
+            Enter tags
+          </label>
+          <input
+            className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
+            type="text"
+            id="tags"
+            name="tags"
+          />
           <div className="self-stretch flex flex-row items-start justify-center py-0 px-5">
             <Buttons content="Post" bgcolor="#939185" onClick={createNewBlog} />
           </div>

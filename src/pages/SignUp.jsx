@@ -4,6 +4,8 @@ import Buttons from "../components/Tools/Buttons";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { addDoc, collection, getDocs, query, serverTimestamp, where } from "@firebase/firestore";
+import { userCollection } from "../firebase";
 
 const SignUp = () => {
   const [newSignUp, setNewSignUp] = useState({
@@ -25,8 +27,10 @@ const SignUp = () => {
     });
   }
 
+
+
   const { fullName, email, username, password, confirmPass } = newSignUp;
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const navigate = useNavigate()
 
   async function handleSubmit(event) {
@@ -37,15 +41,29 @@ const SignUp = () => {
       console.log(err)
       return;
     }
-    
+
     try {
+      const q1 = query(userCollection, where('username', "==", username))
+      const q2 = query(userCollection, where('email', "==", email))
+      const querySnapshot1 = await getDocs(q1)
+      const querySnapshot2 = await getDocs(q2)
+
+
+      if(!querySnapshot1.empty) {
+        setErr('username already in use')
+        return
+      }
+      if(!querySnapshot2.empty) {
+        setErr('email already in use')
+        return
+      }
       setErr('');
       setLoading(true);
       await signup(email, password);
-
+      await addDoc(userCollection, {...newSignUp, createdAt: serverTimestamp()})
       setTimeout(()=> {
         navigate('/')
-      }, 1000)
+      }, 500)
 
     } catch (error) {
       setErr('Failed to create account');
@@ -90,11 +108,11 @@ const SignUp = () => {
               />
               <InputFields
                 content="Enter a username"
-                name="text"
+                name="username"
                 value={username}
                 onChange={handleOnChange}
                 id="username"
-                type="username"
+                type="text"
                 placeholder="@username"
                 className="w-full p-2 border border-gray-300 rounded-md"
               />

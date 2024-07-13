@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import BlogPost from "./pages/BlogPost";
 import Home from "./pages/Home";
 import AddBlog from "./pages/AddBlog";
+import EditBlog from './pages/EditBlog'
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 
@@ -57,6 +58,14 @@ function AppRoutes() {
         element={
         <PrivateRoute>
           <BlogPost data={data} getMeOut={handleLogout} />
+        </PrivateRoute>
+      }
+      />
+      <Route
+        path="/blogpost/edit/:id"
+        element={
+        <PrivateRoute>
+          <EditBlog data={data} getMeOut={handleLogout} />
         </PrivateRoute>
       }
       />
