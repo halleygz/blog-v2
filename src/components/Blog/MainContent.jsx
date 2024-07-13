@@ -26,7 +26,7 @@ const MainContent = ({ className = "", blogD }) => {
         className={`w-[814px] flex flex-col items-start justify-start pt-0 px-0 pb-[30.3px] box-border gap-[30px] max-w-full shrink-0 text-left text-xl text-gray-200 font-lexend-deca ${className}`}
       >
         <div className="h-[100%] flex flex-col"> 
-          <div className="self-stretch h-[50%] relative inline-block shrink-0 mq450:text-base">
+          <div className=" h-[50%] self-stretch relative inline-block shrink-0 mq450:text-base">
             <MarkdownPreview
                   source={content}
                   style={{
