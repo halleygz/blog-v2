@@ -46,16 +46,17 @@ const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
               </button>
             </>
           ) : (
-            <>
-              <div className="flex flex-col px-0 pb-0">
+            <div className="inline mx-auto">
+              <span className="m-5">
                 <Link to="/login">
                   <Buttons content="Login" bgcolor="#e6b9a6" />
                 </Link>
-              </div>
-              <Link to="/signup">
-                <Buttons content="Sign Up" bgcolor="#e6b9a6" />
-              </Link>
-            </>
+               </span> 
+                <Link to="/signup">
+                  <Buttons content="Sign Up" bgcolor="#e6b9a6" />
+                </Link>
+              
+            </div>
           )}
         </div>
       </div>
