@@ -90,13 +90,14 @@ const SignUp = () => {
               />
               <InputFields
                 content="Enter a username"
-                name="text"
+                name="username"
                 value={username}
                 onChange={handleOnChange}
                 id="username"
-                type="username"
+                type="text"
                 placeholder="@username"
                 className="w-full p-2 border border-gray-300 rounded-md"
+                required
               />
               <InputFields
                 content="Enter your password"
