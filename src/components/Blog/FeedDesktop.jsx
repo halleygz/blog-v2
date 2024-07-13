@@ -11,12 +11,12 @@ const FeedDesktop = ({ className = "", contentData }) => {
     >
       <div className="flex-1 flex flex-col items-start justify-start gap-5 min-w-[639px] max-w-full text-left text-chocolate font-dm-serif-display mq900:min-w-full">
           <h1 className="m-0 self-stretch text-inherit font-normal mq900:text-7xl mq450:text-lg">
-        <Link to={`/blogpost/${id}`}>
-            {title}
-        </Link>
+            <Link to={`/blogpost/${id}`}>
+                <a className="">{title}</a>
+            </Link>
           </h1>
-        <div className="w-[964px] flex flex-row items-start justify-start py-0 px-2 box-border max-w-full text-xl text-gray-200 font-lexend-deca">
-          <div className="h-[154px] flex-1 inline-block max-w-full mq450:text-base">
+        <div className="m-0 w-[964px] flex flex-row items-start justify-start py-0 px-2 box-border max-w-full text-xl text-gray-200 font-lexend-deca">
+          <div className="m-0 line-clamp-3 h-[154px] flex-1 inline-block max-w-full mq450:text-base">
             <span>
               <MarkdownPreview
                 source={snippetContent}
@@ -27,10 +27,10 @@ const FeedDesktop = ({ className = "", contentData }) => {
                   fontFamily: "Lexend Deca",
                 }}
               />
-            </span>
-            <span className="font-extralight text-coral">...read more</span>
-          </div>
+            </span>         
+          </div>         
         </div>
+        <div className="m-0 font-extralight text-coral text-[1rem]">...read more</div>
       </div>
     </div>
   );

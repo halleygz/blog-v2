@@ -63,6 +63,8 @@ const BlogList = ({ getMeOut }) => {
 
           <div className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
             <FeedDesktop contentData={{ ...contentData }} />
+            
+            
             <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
               <TagBtns content="#Something" />
               <TagBtns content="#and there" />

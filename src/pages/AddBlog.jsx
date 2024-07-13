@@ -64,7 +64,6 @@ const AddBlog = () => {
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         <div className="self-stretch flex flex-col items-start justify-start gap-[13px] max-w-full">
           <div className="self-stretch flex flex-row items-start justify-start py-0 px-12 box-border max-w-full text-center text-29xl font-dm-serif-display mq750:pl-6 mq750:pr-6 mq750:box-border">
-
             <h1 className="m-0 flex-1 relative text-inherit font-normal font-inherit inline-block max-w-full mq450:text-10xl mq1050:text-19xl">
               What’s in your mind today?
             </h1>
@@ -102,10 +101,10 @@ const AddBlog = () => {
               htmlFor="tags"
               className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
             >
-              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca rounded-[15px] bg-[#939185]">Add tags</button>
+              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca rounded-[15px] bg-[#939185] ">Add tags</button>
             </label>
             <input
-              className="[outline:none] bg-white self-stretch h-12 relative box-border min-w-[480px] mt-1 rounded-[15px]"
+              className="[outline:none] bg-white self-stretch h-12 relative box-border min-w-[480px] mt-1 rounded-[15px] "
               type="text"
               id="tags"
               name="tags"
