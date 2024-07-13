@@ -84,7 +84,7 @@ const AddBlog = () => {
               Title
             </div>
             <TextField
-              className="[border:none] bg-white self-stretch h-[50px] relative shrink-0 rounded-[15px] "
+              className="[border:none] bg-white self-stretch h-[50px] relative shrink-0"
               variant="outlined"
               sx={{
                 "& fieldset": { borderColor: "whitesmoke" },
@@ -112,10 +112,10 @@ const AddBlog = () => {
               htmlFor="tags"
               className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
             >
-              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca rounded-[15px] bg-[#e6b9a6] ">Add tags</button>
+              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca bg-[#e6b9a6] ">Add tags</button>
             </label>
             <input
-              className="[outline:none] bg-white self-stretch h-12 relative box-border  min-w-[480px] mt-1 rounded-[15px] "
+              className="[outline:none] bg-white self-stretch h-12 relative box-border  min-w-[480px] mt-1 "
               type="text"
               id="tags"
               name="tags"

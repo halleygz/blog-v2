@@ -5,7 +5,7 @@ import Profile from "./Profile";
 const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
   return (
     <nav
-      className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca ${className}`}
+      className={`self-stretch flex flex-row items-start justify-between pt-0 px-0 pb-[5px] box-border max-w-full gap-[20px] text-left text-13xl text-darkslategray font-lexend-deca shadow-2xl ${className}`}
     >
       {loggedState ? <Profile firstLetter={fLetter.toUpperCase()} /> : "Blogga"}
       <div className="w-[493px] flex flex-col items-start justify-start pt-[11px] px-0 pb-0 box-border max-w-full text-base">
