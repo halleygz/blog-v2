@@ -9,6 +9,7 @@ const SignUp = () => {
   const [newSignUp, setNewSignUp] = useState({
     fullName: "",
     email: "",
+    username:"",
     password: "",
     confirmPass: "",
   });
@@ -24,7 +25,7 @@ const SignUp = () => {
     });
   }
 
-  const { fullName, email, password, confirmPass } = newSignUp;
+  const { fullName, email, username, password, confirmPass } = newSignUp;
   const { signup, currentUser } = useAuth();
   const navigate = useNavigate()
 
@@ -74,6 +75,7 @@ const SignUp = () => {
                 onChange={handleOnChange}
                 id="fullName"
                 type="text"
+                placeholder="Jane Daniel Foster"
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               <InputFields
@@ -83,6 +85,17 @@ const SignUp = () => {
                 onChange={handleOnChange}
                 id="email"
                 type="email"
+                placeholder="email@example.com"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+              <InputFields
+                content="Enter a username"
+                name="text"
+                value={username}
+                onChange={handleOnChange}
+                id="username"
+                type="username"
+                placeholder="@username"
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               <InputFields
