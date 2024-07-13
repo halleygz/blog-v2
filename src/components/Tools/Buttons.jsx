@@ -1,28 +1,22 @@
-import React from 'react'
-import { Button } from "@mui/material";
-const Buttons = ({content, bgcolor, links=""}) => {
-  return (
-    <Button
-          className="h-12 w-[167.7px]"
-          disableElevation
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            color: "#2f3645",
-            fontSize: "20",
-            background: bgcolor,
-            border: `${bgcolor} solid 1px`,
-            borderRadius: "0px 0px 0px 0px",
-            "&:hover": { background: "#939185" },
-            width: 167.7,
-            height: 48,
-          }}
-        >
-            <a href={`/${links}`}>
-          {content}
-            </a>
-        </Button>
-  )
-}
+import React from 'react';
 
-export default Buttons
+const Buttons = ({  content, bgcolor, isLoading, onClick, className="" }) => {
+  
+  const load = toString(isLoading)
+
+  return (
+    <button
+      className={`my-0 h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-bold font-lexend-deca ${className} ${!load ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+      style={{
+        backgroundColor: bgcolor,
+        border: `1px solid ${bgcolor}`,
+      }}
+      onClick={onClick}
+      disabled={!load}
+    >
+        {content}
+    </button>
+  );
+};
+
+export default Buttons;

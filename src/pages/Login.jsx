@@ -1,35 +1,95 @@
+import { useState } from "react";
 import Buttons from "../components/Tools/Buttons";
 import {InputFields} from "../components/Tools/InputFields";
 import SideJumb from "../components/Tools/SideJumb";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Login = () => {
+  const [newLogin, setNewLogin] = useState({
+    email: "",
+    password: "",
+  })
+  const [err, setErr] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  function handleOnChange(event){
+    setNewLogin((prevLoginVal) => {
+      return {
+        ...prevLoginVal,
+        [event.target.name]: event.target.value,
+      }
+    })
+  }
+
+  const {email, password} = newLogin
+  const {login, currentUser} = useAuth()
+  const navigate = useNavigate()
+
+
+  async function handleSubmit(event){
+    event.preventDefault()
+
+    try {
+      setErr('')
+      setLoading(true)
+      await login(email, password)
+      navigate('/')
+    } catch (error){
+      setErr('Incorrect cridentials')
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
   
+
+
+
+
+
   return (
-    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[119px] leading-[normal] tracking-[normal] text-left text-45xl text-darkslategray font-lexend-deca mq1125:flex-wrap mq1125:gap-[59px] mq750:gap-[30px]">
-      <SideJumb content="Login"/>
-      <div className="w-[587px] flex flex-col items-start justify-start pt-[200px] px-0 pb-0 box-border min-w-[587px] max-w-full text-29xl font-dm-serif-display mq1125:flex-1 mq750:pt-[130px] mq750:box-border mq750:min-w-full">
-        <div className="self-stretch flex flex-col items-start justify-start gap-[45.5px] mq750:gap-[23px]">
-          <h1 className="m-0 w-[275px] h-[81.5px] relative text-inherit font-normal font-inherit inline-block shrink-0 mq450:text-10xl mq1050:text-19xl">
-            Welcome
-          </h1>
-          <form className={`m-0 self-stretch flex flex-col items-start justify-start gap-[20.7px] h-2`}>
-            <InputFields
-              content="Enter your email"
-              name="email"
-              id="email"
-              type="email"
-            />
-            <InputFields
-              content="Enter your password"
-              name="password"
-              id="password"
-              type="password"
-            />
-            <div className="self-stretch flex flex-row items-start justify-between gap-[20px] mq450:flex-wrap">
-              <Buttons content="Login" bgcolor="#939185" links="bloglist" />
-              <div className="h-[40.1px] relative text-xl font-lexend-deca text-left inline-block mq450:text-base">
-                <p className="m-0 text-darkslategray">{`don't have an account? `}</p>
-                <p className="m-0 text-tan">Sign Up</p>
+    <div className="min-h-screen flex  lg:flex-row">
+      <SideJumb content="Login" />
+    
+      <div className="flex  justify-center items-center w-full lg:w-2/3 bg-white p-8 lg:p-16">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-darkslategray">Welcome</h1>
+          </div>
+          {err && <div className="text-red-500">{err}</div>}
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <div className="rounded-md shadow-sm space-y-4">
+              
+              <InputFields
+                content="Enter your email"
+                name="email"
+                value={email}
+                onChange={handleOnChange}
+                id="email"
+                type="email"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+              <InputFields
+                content="Enter your password"
+                name="password"
+                value={password}
+                onChange={handleOnChange}
+                id="password"
+                type="password"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="flex justify-between items-center mt-6">
+              <Buttons content="Login" bgcolor="#939185"
+              isLoading={loading}
+              />
+              <div className="text-gray-600 text-sm">
+                <p className="m-0">{`already have an account? `}
+                <Link to="/signup">
+                  <span className="m-0 text-tan">Sign Up</span>
+                </Link>
+                 </p>
               </div>
             </div>
           </form>
