@@ -59,8 +59,9 @@ const AddBlog = () => {
   }
 
   return (
-    <div className="w-full relative bg-[#e6b9a6] overflow-hidden flex flex-row items-center justify-center gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
+    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-center justify-center gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
       {/* <SideJumb content="Try Buddy"/> */}
+      
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         <div className="self-stretch flex flex-col items-start justify-start gap-[13px] max-w-full">
           <div className="self-stretch flex flex-row items-start justify-start py-0 px-12 box-border max-w-full text-center text-29xl font-dm-serif-display mq750:pl-6 mq750:pr-6 mq750:box-border">
@@ -76,7 +77,7 @@ const AddBlog = () => {
               className="[border:none] bg-white self-stretch h-[50px] relative shrink-0 rounded-[15px] "
               variant="outlined"
               sx={{
-                "& fieldset": { borderColor: "#e6b9a6" },
+                "& fieldset": { borderColor: "whitesmoke" },
                 "& .MuiInputBase-root": {
                   height: "50px",
                   borderRadius: "0px 0px 0px 0px",
@@ -101,10 +102,10 @@ const AddBlog = () => {
               htmlFor="tags"
               className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
             >
-              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca rounded-[15px] bg-[#939185] ">Add tags</button>
+              <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca rounded-[15px] bg-[#e6b9a6] ">Add tags</button>
             </label>
             <input
-              className="[outline:none] bg-white self-stretch h-12 relative box-border min-w-[480px] mt-1 rounded-[15px] "
+              className="[outline:none] bg-white self-stretch h-12 relative box-border  min-w-[480px] mt-1 rounded-[15px] "
               type="text"
               id="tags"
               name="tags"
@@ -113,7 +114,7 @@ const AddBlog = () => {
             />
           </div>
           <div className="self-stretch flex flex-row items-start justify-center py-0 px-5">
-            <Buttons content="Post" bgcolor="#939185" onClick={createNewBlog} />
+            <Buttons content="Post" bgcolor="#e6b9a6" onClick={createNewBlog} />
           </div>
         </div>
       </div>

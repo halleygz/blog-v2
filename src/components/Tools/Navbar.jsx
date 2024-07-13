@@ -47,12 +47,9 @@ const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
             </>
           ) : (
             <>
-              <div className="flex flex-col items-start justify-start pt-3 px-0 pb-0">
-                <Link
-                  className="[text-decoration:none] relative text-[inherit] inline-block min-w-[44px]"
-                  to="/login"
-                >
-                  Login
+              <div className="flex flex-col px-0 pb-0">
+                <Link to="/login">
+                  <Buttons content="Login" bgcolor="#e6b9a6" />
                 </Link>
               </div>
               <Link to="/signup">
