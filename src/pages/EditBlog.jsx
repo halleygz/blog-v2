@@ -6,21 +6,30 @@ import "froala-editor/css/froala_editor.pkgd.min.css";
 import { useEffect, useState, useCallback } from "react";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import { blogCollection, db, userCollection } from "../firebase";
-import { addDoc, onSnapshot, query, getDocs, where, getDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  onSnapshot,
+  query,
+  getDocs,
+  where,
+  getDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const EditBlog = () => {
-  const {id} = useParams()
+  const { id } = useParams();
   const [model, setModel] = useState("");
   const [title, setTitle] = useState("");
   const [user, setUser] = useState({ username: "" }); // replace with actual user state
   const [blog, setBlog] = useState([]);
-  const [createdAt, setCreatedAt] = useState("")
-  const [realAuthor, setRealAuthor] = useState("")
+  const [createdAt, setCreatedAt] = useState("");
+  const [realAuthor, setRealAuthor] = useState("");
   const navigate = useNavigate();
   const { currentUser } = useAuth();
-
   const getUserName = useCallback(async () => {
     const q1 = query(userCollection, where("email", "==", currentUser.email));
     const querySnapshot1 = await getDocs(q1);
@@ -48,18 +57,18 @@ const EditBlog = () => {
     return unsubscribe;
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     // const fetchBlog = async () => {
     //   const docRef = doc(db,'blogs',id)
     //   const docSnap = await getDoc()
     // }
-    const selectedBlog = blog.find((b)=>b.id==id)
-    setModel(selectedBlog?.content)
-    setTitle(selectedBlog?.title)
-    setCreatedAt(selectedBlog?.createdAt)
-    setRealAuthor(selectedBlog?.author)
-    console.log(selectedBlog?.author)
-  },[blog])
+    const selectedBlog = blog.find((b) => b.id == id);
+    setModel(selectedBlog?.content);
+    setTitle(selectedBlog?.title);
+    setCreatedAt(selectedBlog?.createdAt);
+    setRealAuthor(selectedBlog?.author);
+    console.log(selectedBlog?.author);
+  }, [blog]);
 
   const updateTheBlog = useCallback(async () => {
     const updatedBlog = {
@@ -84,6 +93,19 @@ const EditBlog = () => {
     }
   }, [user.username, title, model, navigate]);
 
+  const deleteBlog = useCallback(async () => {
+    if (!id) return; // Ensure blogId is set
+
+    try {
+      const blogDocRef = doc(blogCollection, id);
+      await deleteDoc(blogDocRef);
+      navigate("/bloglist");
+      console.log("Document successfully deleted!");
+    } catch (e) {
+      console.error("Error deleting document: ", e);
+    }
+  }, [id, navigate]);
+
   const renderIfValid = (
     <div className="self-stretch flex flex-col items-start justify-start gap-[13px] max-w-full">
       <div className="self-stretch flex flex-row items-start justify-start py-0 px-12 box-border max-w-full text-center text-29xl font-dm-serif-display mq750:pl-6 mq750:pr-6 mq750:box-border">
@@ -92,6 +114,7 @@ const EditBlog = () => {
         </h1>
       </div>
       <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[25.8px] gap-[4.4px]">
+        
         <div className="w-[252.1px] relative font-light inline-block shrink-0 mq450:text-lgi">
           Title
         </div>
@@ -111,25 +134,26 @@ const EditBlog = () => {
       </div>
       <div className="w-full">
         <FroalaEditor model={model} onModelChange={setModel} />
-        <MarkdownPreview
-          source={model}
-          style={{ background: "transparent", color: "black" }}
+      </div>
+      <div className="inline">
+        <label
+          htmlFor="tags"
+          className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
+        >
+          <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca bg-[#e6b9a6] ">
+            Add tags
+          </button>
+        </label>
+        <input
+          className="[outline:none] bg-white self-stretch h-12 relative box-border  min-w-[480px] mt-1 "
+          type="text"
+          id="tags"
+          name="tags"
         />
       </div>
-      <label
-        htmlFor="tags"
-        className="w-[275.5px] relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px] min-w-[117px]"
-      >
-        Enter tags
-      </label>
-      <input
-        className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
-        type="text"
-        id="tags"
-        name="tags"
-      />
-      <div className="self-stretch flex flex-row items-start justify-center py-0 px-5">
+      <div className="self-stretch flex flex-row mb-10 items-start justify-around py-0 px-5">
         <Buttons content="Edit" bgcolor="#939185" onClick={updateTheBlog} />
+        <Buttons content="delete" bgcolor="#ff4c00" onClick={deleteBlog}/>
       </div>
     </div>
   );
@@ -143,9 +167,9 @@ const EditBlog = () => {
       </div>
     </div>
   );
-    
+
   return (
-    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-start justify-start gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
+    <div className="w-full relative bg-whitesmoke overflow-hidden flex flex-row items-center justify-center gap-[71px] leading-[normal] tracking-[normal] text-center text-45xl text-darkslategray font-lexend-deca lg:flex-wrap lg:gap-[35px] mq750:gap-[18px]">
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         {realAuthor === user.username ? renderIfValid : renderIfNotValid}
       </div>
