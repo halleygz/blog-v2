@@ -102,10 +102,6 @@ const AddBlog = () => {
           </div>
           <div className="w-full">
             <FroalaEditor model={model} onModelChange={setModel} />
-            <MarkdownPreview
-              source={model}
-              style={{ background: "transparent", color: "black" }}
-            />
           </div>
           <div className="inline">
             <label
