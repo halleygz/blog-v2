@@ -21,7 +21,7 @@ const Navbar = ({ className = "", fLetter = "", loggedState, logout }) => {
               </div>
               <div className="flex flex-col items-start justify-start pt-3 px-0 pb-0">
                 <div className="flex flex-row items-start justify-start cursor-pointer">
-                  <Link className="[text-decoration:none] relative text-[inherit] inline-block min-w-[66px]">
+                  <Link to="/bloglist" className="[text-decoration:none] relative text-[inherit] inline-block min-w-[66px]">
                     trending
                   </Link>
                 </div>

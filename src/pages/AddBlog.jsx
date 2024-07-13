@@ -7,9 +7,11 @@ import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
 import { useEffect, useState } from "react";
 import MarkdownPreview from "@uiw/react-markdown-preview";
-import { blogCollection, db } from "../firebase";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { blogCollection, db, userCollection } from "../firebase";
+import { collection, addDoc, onSnapshot, query, getDocs, where, getDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+// import { promiseHooks } from "v8";
 
 const AddBlog = () => {
   const [model, setModel] = useState("");
@@ -17,6 +19,20 @@ const AddBlog = () => {
   const [user, setUser] = useState({ username: "@halle" }); // replace with actual user state
   const [blog, setBlog] = useState([]);
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  
+  async function testFun(){
+    const q1 = query(userCollection, where('email', "==", currentUser.email))
+    const querySnapshot1 = await getDocs(q1)
+    return querySnapshot1.docs[0].id
+  }
+  async function getUserName(){
+    const id = await testFun()
+    const ask = doc(userCollection, id)
+    const docSnap = await getDoc(ask)
+    return setUser({username: docSnap.data().username})
+  }
+  console.log(user);
 
   // unsubscribeer
   useEffect(() => {
@@ -38,7 +54,7 @@ const AddBlog = () => {
   // create note
   async function createNewBlog() {
     const newBlog = {
-      author: user.username,
+      author: user,
       createdAt: Date.now(),
       updatedAt: "",
       title: title,
@@ -50,7 +66,7 @@ const AddBlog = () => {
     };
 
     try {
-      const newBlogRef = await addDoc(collection(db, "blogs"), newBlog);
+      const newBlogRef = await addDoc(blogCollection, newBlog);
       navigate("/bloglist");
       console.log("Document written with ID: ", newBlogRef.id);
     } catch (e) {
@@ -93,20 +109,20 @@ const AddBlog = () => {
               style={{ background: "transparent", color: "black" }}
             />
           </div>
-            <label
-              htmlFor="tags"
-              className="w-[275.5px] relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
-            >
-              Enter tags
-            </label>
-            <input
-              className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
-              type="text"
-              id="tags"
-              name="tags"
-              // value={value}
-              // onChange={onChange}
-            />
+          <label
+            htmlFor="tags"
+            className="w-[275.5px] relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
+          >
+            Enter tags
+          </label>
+          <input
+            className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
+            type="text"
+            id="tags"
+            name="tags"
+            // value={value}
+            // onChange={onChange}
+          />
           <div className="self-stretch flex flex-row items-start justify-center py-0 px-5">
             <Buttons content="Post" bgcolor="#939185" onClick={createNewBlog} />
           </div>

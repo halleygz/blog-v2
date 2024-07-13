@@ -5,7 +5,7 @@ const InputFields = ({ content, name, id, type, value, onChange, placeholder="" 
         {content}
       </label>
       <input
-        className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid border-gray-100 mt-3"
+        className="[outline:none] bg-[transparent] self-stretch h-12 relative box-border min-w-[250px] border-[1px] border-solid ring-inset border-gray-100 mt-3 focus:ring-2 focus:ring-inset focus:ring-gray-700"
         type={type}
         id={id}
         name={name}
