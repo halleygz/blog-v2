@@ -31,7 +31,9 @@ const FeedDesktop = ({ className = "", contentData }) => {
               </span>         
             </div>         
           </div>
-          <div className="mx-auto max-w-[83%] font-extralight text-coral text-[1rem]">...read more</div>
+          <div className="mx-auto max-w-[83%] font-extralight text-coral text-[1rem]">
+            <Link className="no-underline text-[#DF6633]" to={`/blogpost/${id}`}>...read more</Link>
+          </div>
         </div>
       </div>
     </div>
