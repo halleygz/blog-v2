@@ -15,7 +15,7 @@ const MainContent = ({ className = "", blogD }) => {
         </h1>
         <div className="w-[309.5px] flex flex-col items-start justify-start gap-[11.8px] text-xl text-gray-100 font-lexend-deca">
           <div className="self-stretch relative font-extralight mq450:text-base">
-            written by {author}
+            written by @{author}
           </div>
           <div className="w-[192.8px] h-[36.8px] relative font-extralight inline-block shrink-0 mq450:text-base">
             on {createdAt}
