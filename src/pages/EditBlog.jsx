@@ -3,8 +3,7 @@ import Buttons from "../components/Tools/Buttons";
 import FroalaEditor from "react-froala-wysiwyg";
 import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
-import { useEffect, useState, useCallback } from "react";
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { blogCollection, db, userCollection } from "../firebase";
 import {
   addDoc,
@@ -24,12 +23,15 @@ const EditBlog = () => {
   const { id } = useParams();
   const [model, setModel] = useState("");
   const [title, setTitle] = useState("");
-  const [user, setUser] = useState({ username: "" }); // replace with actual user state
+  const [user, setUser] = useState({ username: "" });
   const [blog, setBlog] = useState([]);
+  const [tags, setTags] = useState("");
+  const [tagsArray, setTagsArray] = useState([]);
   const [createdAt, setCreatedAt] = useState("");
   const [realAuthor, setRealAuthor] = useState("");
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+
   const getUserName = useCallback(async () => {
     const q1 = query(userCollection, where("email", "==", currentUser.email));
     const querySnapshot1 = await getDocs(q1);
@@ -39,6 +41,13 @@ const EditBlog = () => {
       setUser({ username: userData.username });
     }
   }, [currentUser.email]);
+
+  const onTagsChange = useCallback((event) => {
+    const value = event.target.value;
+    setTags(value);
+    const resultArray = value.replace(/\s+/g, "").split(",");
+    setTagsArray(resultArray);
+  }, []);
 
   useEffect(() => {
     if (currentUser) {
@@ -58,17 +67,14 @@ const EditBlog = () => {
   }, []);
 
   useEffect(() => {
-    // const fetchBlog = async () => {
-    //   const docRef = doc(db,'blogs',id)
-    //   const docSnap = await getDoc()
-    // }
-    const selectedBlog = blog.find((b) => b.id == id);
-    setModel(selectedBlog?.content);
-    setTitle(selectedBlog?.title);
-    setCreatedAt(selectedBlog?.createdAt);
-    setRealAuthor(selectedBlog?.author);
-    console.log(selectedBlog?.author);
-  }, [blog]);
+    const selectedBlog = blog.find((b) => b.id === id);
+    setModel(selectedBlog?.content || "");
+    setTitle(selectedBlog?.title || "");
+    setCreatedAt(selectedBlog?.createdAt || "");
+    setRealAuthor(selectedBlog?.author || "");
+    setTagsArray(selectedBlog?.tags || []);
+    setTags((selectedBlog?.tags || []).join(', '));
+  }, [blog, id]);
 
   const updateTheBlog = useCallback(async () => {
     const updatedBlog = {
@@ -77,24 +83,24 @@ const EditBlog = () => {
       updatedAt: Date.now(),
       title: title,
       content: model,
-      snippetContent: model.slice(0, 300), // snippet of the first 300 characters
-      tags: ["tag1", "tag2", "tag3"],
+      snippetContent: model.slice(0, 300),
+      tags: tagsArray,
       views: 0,
       comments: [],
     };
 
     try {
       const updateBlogRef = doc(blogCollection, id);
-      const updateBlog = await updateDoc(updateBlogRef, updatedBlog);
+      await updateDoc(updateBlogRef, updatedBlog);
       navigate("/bloglist");
-      console.log("Document written with ID: ", updateBlog.id);
+      console.log("Document written with ID: ", id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-  }, [user.username, title, model, navigate]);
+  }, [user.username, title, model, tagsArray, createdAt, id, navigate]);
 
   const deleteBlog = useCallback(async () => {
-    if (!id) return; // Ensure blogId is set
+    if (!id) return;
 
     try {
       const blogDocRef = doc(blogCollection, id);
@@ -114,7 +120,6 @@ const EditBlog = () => {
         </h1>
       </div>
       <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[25.8px] gap-[4.4px]">
-        
         <div className="w-[252.1px] relative font-light inline-block shrink-0 mq450:text-lgi">
           Title
         </div>
@@ -136,24 +141,31 @@ const EditBlog = () => {
         <FroalaEditor model={model} onModelChange={setModel} />
       </div>
       <div className="inline">
+        {tagsArray.map((atag) => (
+          <code className="bg-slate-300 m-1 pl-1 pr-1 align-center rounded-[8px]" key={atag}> #{atag} </code>
+        ))}
+      </div>
+      <div className="inline">
         <label
           htmlFor="tags"
-          className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px]  min-w-[117px]"
+          className="mr-5 relative text-5xl leading-[24px] font-light font-lexend-deca text-darkslategray text-left inline-block mq450:text-lgi mq450:leading-[19px] min-w-[117px]"
         >
-          <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca bg-[#e6b9a6] ">
+          <button className="h-12 w-[167.7px] text-[1.3rem] text-[#2f3645] font-normal font-lexend-deca bg-[#e6b9a6]">
             Add tags
           </button>
         </label>
         <input
-          className="[outline:none] bg-white self-stretch h-12 relative box-border  min-w-[480px] mt-1 "
+          className="[outline:none] bg-white self-stretch h-12 relative box-border min-w-[480px] mt-1"
           type="text"
           id="tags"
           name="tags"
+          value={tags}
+          onChange={onTagsChange}
         />
       </div>
       <div className="self-stretch flex flex-row mb-10 items-start justify-around py-0 px-5">
         <Buttons content="Edit" bgcolor="#939185" onClick={updateTheBlog} />
-        <Buttons content="delete" bgcolor="#ff4c00" onClick={deleteBlog}/>
+        <Buttons content="delete" bgcolor="#ff4c00" onClick={deleteBlog} />
       </div>
     </div>
   );
