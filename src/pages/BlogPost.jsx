@@ -6,6 +6,8 @@ import {useAuth} from '../contexts/AuthContext'
 import { useCallback, useEffect, useState } from "react";
 import { doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db, userCollection } from "../firebase";
+import ChatButton from "../components/Blog/ChatBot";
+
 const BlogPost = ({ data, getMeOut }) => {
   const {id} = useParams()
   const [blog, setBlog] = useState({})
@@ -89,6 +91,7 @@ const BlogPost = ({ data, getMeOut }) => {
           </div>
         </section>
       </div>
+      <ChatButton />
     </>
   );
 };
