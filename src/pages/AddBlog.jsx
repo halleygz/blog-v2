@@ -126,7 +126,7 @@ const AddBlog = () => {
           </div>
           <div className="inline">
             {tagsArray.map((atag) => (
-              <code>#{atag}</code>
+              <code className="bg-slate-300 m-1 pl-1 pr-1 align-center rounded-[8px]">#{atag}</code>
             ))}
           </div>
           <div className="inline">
