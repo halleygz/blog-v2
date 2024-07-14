@@ -6,6 +6,8 @@ import TagBtns from "../components/Blog/TagBtns";
 import { useAuth } from "../contexts/AuthContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import ChatButton from "../components/Blog/ChatBot";
+
 
 const BlogList = ({ getMeOut }) => {
   const { currentUser } = useAuth();
@@ -80,6 +82,7 @@ const BlogList = ({ getMeOut }) => {
           </div>
         </section>
       </div>
+      <ChatButton/>
     </div>
   );
 };

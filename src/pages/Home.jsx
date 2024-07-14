@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import { useAuth } from "../contexts/AuthContext";
 import Buttons from "../components/Tools/Buttons";
 import { Link, useNavigate } from "react-router-dom";
+import ChatButton from "../components/Blog/ChatBot";
+
 
 const Home = ({ getMeOut }) => {
   // const {currentUser, logout} = useAuth()
@@ -68,6 +70,7 @@ const Home = ({ getMeOut }) => {
       <div className="self-stretch flex flex-row items-start justify-center">
         <div className="relative">© BLOGGA. ALL RIGHTS RESERVED</div>
       </div>
+      <ChatButton/>
     </div>
   );
 };
