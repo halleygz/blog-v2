@@ -70,7 +70,6 @@ const Home = ({ getMeOut }) => {
       <div className="self-stretch flex flex-row items-start justify-center">
         <div className="relative">© BLOGGA. ALL RIGHTS RESERVED</div>
       </div>
-      <ChatButton/>
     </div>
   );
 };
