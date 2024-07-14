@@ -40,9 +40,9 @@ const MainContent = ({ className = "", blogD }) => {
                 />
           </div>
           <div className="h-[50%] flex flex-row items-start justify-start  px-2.5 box-border">
-          {tags.map((tag)=>(
-                <TagBtns  content={tag} />
-                ))}
+          {tags.map((tag, index) => (
+        <TagBtns key={index} content={tag} />
+      ))}
           </div>
         </div>
         <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
