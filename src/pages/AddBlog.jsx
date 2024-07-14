@@ -20,6 +20,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import debounce from "lodash/debounce";
+import ChatButton from "../components/Blog/ChatBot";
 
 const AddBlog = () => {
   const [model, setModel] = useState("");
@@ -152,6 +153,7 @@ const AddBlog = () => {
           </div>
         </div>
       </div>
+      <ChatButton/>
     </div>
   );
 };
