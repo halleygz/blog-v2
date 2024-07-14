@@ -18,6 +18,7 @@ import {
 } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import ChatButton from "../components/Blog/ChatBot";
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -185,6 +186,7 @@ const EditBlog = () => {
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         {realAuthor === user.username ? renderIfValid : renderIfNotValid}
       </div>
+      <ChatButton/>
     </div>
   );
 };
