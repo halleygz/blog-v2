@@ -75,9 +75,9 @@ const ChatBotComponent = ({ url="https://blogga-chatbot.streamlit.app/?embed=Tru
           />
         </svg>
       </button>
-      <div className={`fixed bottom-16 right-4 w-80 h-96 bg-white shadow-lg rounded-lg overflow-hidden ${showChat ? 'block' : 'hidden'}`}>
+      <div className={`fixed bottom-16 right-4 w-[400px] h-[500px] bg-white shadow-lg rounded-lg overflow-hidden ${showChat ? 'block' : 'hidden'}`}>
         <div className="bg-gray-800 text-white p-2 flex justify-between items-center">
-          <span>ChatBot</span>
+          
           <button onClick={toggleChat}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
