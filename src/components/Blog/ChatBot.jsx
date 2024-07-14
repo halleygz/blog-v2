@@ -14,16 +14,18 @@ const ChatBotComponent = ({ url="https://blogga-chatbot.streamlit.app/?embed=Tru
   const toggleChat = () => {
     setShowChat(!showChat);
   };
-
+  if (currentUser){
+    
+  }
   const getUserName = useCallback(async () => {
-    const q1 = query(userCollection, where("email", "==", currentUser.email));
+    const q1 = query(userCollection, where("email", "==", currentUser?.email));
     const querySnapshot1 = await getDocs(q1);
     if (!querySnapshot1.empty) {
       const userDoc = querySnapshot1.docs[0];
       const userData = userDoc.data();
       setUser({ username: userData.username });
     }
-  }, [currentUser.email]);
+  }, [currentUser?.email]);
 
   useEffect(() => {
     if (showChat && !iframeLoaded) {
