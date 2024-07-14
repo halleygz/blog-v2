@@ -5,8 +5,7 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import TagBtns from "./TagBtns";
 
 const MainContent = ({ className = "", blogD }) => {
-  const {author, comments, content, createdAt, tags, title} = blogD
-  console.log(tags)
+  const {author, comments, content, createdAt, tags = [], title} = blogD
   return (
     <>
       <section className="w-[774.6px] flex flex-col items-start justify-start gap-[23px] max-w-full shrink-0 text-left text-[40px] text-coral font-dm-serif-display">
@@ -43,6 +42,7 @@ const MainContent = ({ className = "", blogD }) => {
           {tags.map((tag, index) => (
         <TagBtns key={index} content={tag} />
       ))}
+
           </div>
         </div>
         <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
