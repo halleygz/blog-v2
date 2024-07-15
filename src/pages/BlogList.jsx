@@ -20,10 +20,10 @@ const BlogList = ({ getMeOut }) => {
       const querySnapshot = await getDocs(collection(db,'blogs'))
       const docsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))  
       setData(docsData)
-      console.log(querySnapshot)
     }
     getDataFromFirebase()
   },[])
+  const sortedData = data.sort((a,b) => b.createdAt - a.createdAt)
 
   useEffect(() => {
     if (!currentUser) {
@@ -65,7 +65,7 @@ const BlogList = ({ getMeOut }) => {
             </div>
 
           
-            {data.map((item) => (
+            {sortedData.map((item) => (
             <div key={item.id} className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
               <FeedDesktop contentData={{ ...item }} />
               <br/>
