@@ -45,15 +45,7 @@ const MainContent = ({ className = "", blogD }) => {
 
           </div>
         </div>
-        <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
-          <InputFields
-            content="Comment"
-            name="comment"
-            id="comment"
-            type="text"
-          />
-        </div>
-        <Buttons content="Comment" bgcolor="#939185" links="blogpost" />
+        
       </section>
     </>
   );
