@@ -128,7 +128,7 @@ const SignUp = () => {
                 name="password"
                 value={password}
                 onChange={handleOnChange}
-                placeholder="password has to be more than 6 characters"
+                placeholder="Enter a password"
                 id="password"
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-md"
