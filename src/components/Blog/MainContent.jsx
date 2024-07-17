@@ -5,7 +5,7 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import TagBtns from "./TagBtns";
 
 const MainContent = ({ className = "", blogD }) => {
-  const {author, comments, content, createdAt, tags = [], title} = blogD
+  const {author, content, createdAt, tags = [], title} = blogD
   return (
     <>
       <section className="w-[774.6px] flex flex-col items-start justify-start gap-[23px] max-w-full shrink-0 text-left text-[40px] text-coral font-dm-serif-display">
@@ -17,7 +17,7 @@ const MainContent = ({ className = "", blogD }) => {
             written by @{author}
           </div>
           <div className="w-[192.8px] h-[36.8px] relative font-extralight inline-block shrink-0 mq450:text-base">
-            on {createdAt}
+            on {new Date(createdAt).toDateString()}
           </div>
         </div>
       </section>
@@ -45,15 +45,7 @@ const MainContent = ({ className = "", blogD }) => {
 
           </div>
         </div>
-        <div className="w-[802px] flex flex-col items-start justify-start pt-0 px-0 pb-2 box-border gap-[13px] max-w-full text-5xl text-darkslategray">
-          <InputFields
-            content="Comment"
-            name="comment"
-            id="comment"
-            type="text"
-          />
-        </div>
-        <Buttons content="Comment" bgcolor="#939185" links="blogpost" />
+        
       </section>
     </>
   );
