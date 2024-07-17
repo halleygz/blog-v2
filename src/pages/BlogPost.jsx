@@ -4,7 +4,7 @@ import Navbar from "../components/Tools/Navbar";
 import Profile from "../components/Tools/Profile";
 import { useAuth } from '../contexts/AuthContext';
 import { useCallback, useEffect, useState } from "react";
-import { doc, getDoc, getDocs, query, updateDoc, where, arrayUnion } from "firebase/firestore";
+import { doc, getDoc, getDocs, query, updateDoc, where, arrayUnion, onSnapshot } from "firebase/firestore";
 import { blogCollection, db, userCollection } from "../firebase";
 import ChatButton from "../components/Blog/ChatBot";
 import CommentDisplay from "../components/Blog/Comment";
@@ -19,6 +19,7 @@ const BlogPost = ({ data, getMeOut }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ username: "" });
   const [commentInput, setCommentInput] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const getUserName = useCallback(async () => {
     const q1 = query(userCollection, where("email", "==", currentUser.email));
@@ -45,6 +46,17 @@ const BlogPost = ({ data, getMeOut }) => {
     getUserName();
   }, [id, getUserName]);
 
+  useEffect(()=> {
+    const unsubscribe = onSnapshot(doc(blogCollection,id), (doc)=>{
+      if(doc.exists()){
+        setBlog({ id: doc.id, ...doc.data()})
+      } else {
+        console.log('No such document')
+      }
+    })
+    return () => unsubscribe()
+  }, [id])  
+
   const postComment = useCallback(async () => {
     const newComment = {
       uid: nanoid(),
@@ -54,15 +66,18 @@ const BlogPost = ({ data, getMeOut }) => {
     };
 
     try {
+      setLoading(true)
       const updateBlogCommentRef = doc(blogCollection, id);
       await updateDoc(updateBlogCommentRef, {
         comments: arrayUnion(newComment)
       });
       console.log('Comment posted successfully');
       setCommentInput("");  // Clear the input field after posting the comment
+      
     } catch (e) {
       console.log(e);
     }
+    setLoading(false)
   }, [blog, commentInput, currentUser.uid, id, user.username]);
   
   useEffect(() => {
@@ -97,7 +112,7 @@ console.log(blog.comments)
               onChange={(e) => setCommentInput(e.target.value)}
             />
           </div>
-          <Buttons content="Comment" bgcolor="#939185" />
+          <Buttons isLoading={loading} content="Comment" bgcolor="#939185" />
         </form>
         {blog?.comments && blog.comments.map((comment)=><CommentDisplay key={comment.uid} comments={comment.comment} userProfile={comment.commenter[0]}/>)}
       </div>
