@@ -16,6 +16,7 @@
     "firebase": "^10.12.3",
     "font-awesome": "^4.7.0",
     "froala-editor": "^4.2.1",
+    "nanoid": "^5.0.7",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -42,6 +42,12 @@ const SignUp = () => {
       return;
     }
 
+    if(password.length < 6) {
+      setErr('Password should be 6 characters or more')
+      console.log(err)
+      return;
+    }
+
     try {
       const q1 = query(userCollection, where('username', "==", username))
       const q2 = query(userCollection, where('email', "==", email))
@@ -67,7 +73,7 @@ const SignUp = () => {
 
     } catch (error) {
       setErr('Failed to create account');
-      console.error(error);
+      console.log(error.message.slice(10));
     } finally {
       setLoading(false);
     }
@@ -122,6 +128,7 @@ const SignUp = () => {
                 name="password"
                 value={password}
                 onChange={handleOnChange}
+                placeholder="Enter a password"
                 id="password"
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-md"
@@ -131,6 +138,7 @@ const SignUp = () => {
                 name="confirmPass"
                 value={confirmPass}
                 onChange={handleOnChange}
+                placeholder="confirm your password"
                 id="confirmPass"
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-md"
