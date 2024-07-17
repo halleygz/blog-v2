@@ -6,7 +6,7 @@ const Profile = ({ className = "", firstLetter="H" }) => {
     >
       <div className="flex justify-center text-center items-center rounded-[50%] bg-tan w-full h-full">
       <a className="[text-decoration:none] text-[inherit] min-w-[20px] whitespace-nowrap">
-        {firstLetter}
+        {firstLetter.toUpperCase()}
       </a>
       </div>
     </div>
