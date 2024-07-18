@@ -13,9 +13,10 @@ import Login from "./pages/Login";
 import BlogPost from "./pages/BlogPost";
 import Home from "./pages/Home";
 import AddBlog from "./pages/AddBlog";
-import EditBlog from './pages/EditBlog'
+import EditBlog from "./pages/EditBlog";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
+import Search from "./pages/Search";
 
 function AppRoutes() {
   const { currentUser, logout } = useAuth();
@@ -46,31 +47,45 @@ function AppRoutes() {
       <Route
         path="/bloglist"
         element={
-        <PrivateRoute>
-          <BlogList data={data} getMeOut={handleLogout} />
-        </PrivateRoute>
-      
-      }
+          <PrivateRoute>
+            <BlogList data={data} getMeOut={handleLogout} />
+          </PrivateRoute>
+        }
       />
       <Route path="/login" element={<Login />} />
       <Route
         path="/blogpost/:id"
         element={
-        <PrivateRoute>
-          <BlogPost data={data} getMeOut={handleLogout} />
-        </PrivateRoute>
-      }
+          <PrivateRoute>
+            <BlogPost data={data} getMeOut={handleLogout} />
+          </PrivateRoute>
+        }
       />
       <Route
         path="/blogpost/edit/:id"
         element={
-        <PrivateRoute>
-          <EditBlog data={data} getMeOut={handleLogout} />
-        </PrivateRoute>
-      }
+          <PrivateRoute>
+            <EditBlog data={data} getMeOut={handleLogout} />
+          </PrivateRoute>
+        }
       />
       <Route path="/" element={<Home data={data} getMeOut={handleLogout} />} />
-      <Route path="/addblog" element={<AddBlog />} />
+      <Route
+        path="/addblog"
+        element={
+          <PrivateRoute>
+            <AddBlog />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/search"
+        element={
+          <PrivateRoute>
+            <Search />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }
