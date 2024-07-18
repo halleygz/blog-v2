@@ -7,23 +7,27 @@ import { useAuth } from "../contexts/AuthContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import ChatButton from "../components/Blog/ChatBot";
-
+import { InputFields } from "../components/Tools/InputFields";
+import Buttons from "../components/Tools/Buttons";
 
 const Search = ({ getMeOut }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState('')
 
-
-  useEffect(()=>{
-    const getDataFromFirebase = async () =>{
-      const querySnapshot = await getDocs(collection(db,'blogs'))
-      const docsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))  
-      setData(docsData)
-    }
-    getDataFromFirebase()
-  },[])
-  const sortedData = data.sort((a,b) => b.createdAt - a.createdAt)
+  useEffect(() => {
+    const getDataFromFirebase = async () => {
+      const querySnapshot = await getDocs(collection(db, "blogs"));
+      const docsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setData(docsData);
+    };
+    getDataFromFirebase();
+  }, []);
+  const sortedData = data.sort((a, b) => b.createdAt - a.createdAt);
 
   useEffect(() => {
     if (!currentUser) {
@@ -49,11 +53,15 @@ const Search = ({ getMeOut }) => {
   return (
     <div className="bg-[#e6b9a6]">
       <div className="mx-auto max-w-4xl relative bg-whitesmoke overflow-y-auto flex flex-col items-start justify-start pt-4 pb-[373px] pr-[34px] pl-9 box-border gap-[35px] leading-[normal] tracking-[normal] text-left text-xl text-gray-200 font-lexend-deca mq675:gap-[17px]">
-        <Navbar loggedState={currentUser} fLetter={currentUser?.email[0]} logout={getMeOut} />
+        <Navbar
+          loggedState={currentUser}
+          fLetter={currentUser?.email[0]}
+          logout={getMeOut}
+        />
 
         <section className="self-stretch flex flex-row items-start justify-center py-0 pr-0 pl-[34px] box-border max-w-full mt-10">
           <div className="self-stretch flex flex-col items-start justify-start gap-[35px] max-w-full mq750:gap-[17px]">
-            <div className="flex flex-row items-start justify-start py-0 px-[9px]">
+            <div className="flex flex-row items-center justify-around content-center py-0 px-[9px]">
               <div className="flex flex-col items-start justify-start gap-[4px]">
                 <div className="flex flex-row items-start justify-start py-0 pr-[22px] pl-[19px]">
                   <div className="h-1 w-5 relative bg-tan" />
@@ -62,27 +70,32 @@ const Search = ({ getMeOut }) => {
                   Search
                 </a>
               </div>
+
+              <InputFields onChange={(e)=>setSearch(e.target.value)} />
             </div>
 
-          
-            {sortedData.map((item) => (
-            <div key={item.id} className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer">
-              <FeedDesktop contentData={{ ...item }} />
-              <br/>
-              
-              <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
-                {item.tags.map((tag)=>(
-                <TagBtns  content={tag} />
-                ))}
-                <TagBtns content="post details" />
+            {sortedData.filter((item)=>{
+                return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search)
+            }).map((item) => (
+              <div
+                key={item.id}
+                className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer"
+              >
+                <FeedDesktop contentData={{ ...item }} />
+                <br />
+
+                <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
+                  {item.tags.map((tag) => (
+                    <TagBtns content={tag} />
+                  ))}
+                  <TagBtns content="post details" />
+                </div>
               </div>
-            </div>
-
             ))}
           </div>
         </section>
       </div>
-      <ChatButton/>
+      <ChatButton />
     </div>
   );
 };
