@@ -79,6 +79,7 @@ const AddBlog = () => {
       tags: tagsArray,
       views: 0,
       comments: [],
+      searchables: `${title} ${model.slice(0,300)} ${tagsArray.toString()}`,
     };
 
     try {
