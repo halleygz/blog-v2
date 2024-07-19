@@ -74,7 +74,7 @@ const EditBlog = () => {
     setCreatedAt(selectedBlog?.createdAt || "");
     setRealAuthor(selectedBlog?.author || "");
     setTagsArray(selectedBlog?.tags || []);
-    setTags((selectedBlog?.tags || []).join(', '));
+    setTags((selectedBlog?.tags || []).join(", "));
   }, [blog, id]);
 
   const updateTheBlog = useCallback(async () => {
@@ -88,6 +88,7 @@ const EditBlog = () => {
       tags: tagsArray,
       views: 0,
       comments: [],
+      searchables: `${title} ${snippetContent} ${tags.toString()}`,
     };
 
     try {
@@ -143,7 +144,13 @@ const EditBlog = () => {
       </div>
       <div className="inline">
         {tagsArray.map((atag) => (
-          <code className="bg-slate-300 m-1 pl-1 pr-1 align-center rounded-[8px]" key={atag}> #{atag} </code>
+          <code
+            className="bg-slate-300 m-1 pl-1 pr-1 align-center rounded-[8px]"
+            key={atag}
+          >
+            {" "}
+            #{atag}{" "}
+          </code>
         ))}
       </div>
       <div className="inline">
@@ -186,7 +193,7 @@ const EditBlog = () => {
       <div className="w-[670px] flex flex-col items-start justify-start pt-[46px] px-0 pb-0 box-border min-w-[670px] max-w-full text-left text-5xl lg:flex-1 mq450:pt-5 mq450:box-border mq750:min-w-full mq1050:pt-[30px] mq1050:box-border">
         {realAuthor === user.username ? renderIfValid : renderIfNotValid}
       </div>
-      <ChatButton/>
+      <ChatButton />
     </div>
   );
 };
