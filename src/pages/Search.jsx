@@ -4,8 +4,8 @@ import Navbar from "../components/Tools/Navbar";
 import FeedDesktop from "../components/Blog/FeedDesktop";
 import TagBtns from "../components/Blog/TagBtns";
 import { useAuth } from "../contexts/AuthContext";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { blogCollection, db } from "../firebase";
 import ChatButton from "../components/Blog/ChatBot";
 import { InputFields } from "../components/Tools/InputFields";
 import Buttons from "../components/Tools/Buttons";
@@ -14,7 +14,7 @@ const Search = ({ getMeOut }) => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const getDataFromFirebase = async () => {
@@ -71,27 +71,31 @@ const Search = ({ getMeOut }) => {
                 </a>
               </div>
 
-              <InputFields onChange={(e)=>setSearch(e.target.value)} />
+              <InputFields onChange={(e) => setSearch(e.target.value)} />
             </div>
 
-            {sortedData.filter((item)=>{
-                return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search)
-            }).map((item) => (
-              <div
-                key={item.id}
-                className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer"
-              >
-                <FeedDesktop contentData={{ ...item }} />
-                <br />
+            {sortedData
+              .filter((item) => {
+                return search.toLowerCase() === ""
+                  ? item
+                  : item.searchables.toLowerCase().includes(search);
+              })
+              .map((item) => (
+                <div
+                  key={item.id}
+                  className="self-stretch flex flex-col items-start justify-start gap-[2px] max-w-full cursor-pointer"
+                >
+                  <FeedDesktop contentData={{ ...item }} />
+                  <br />
 
-                <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
-                  {item.tags.map((tag) => (
-                    <TagBtns content={tag} />
-                  ))}
-                  <TagBtns content="post details" />
+                  <div className="w-[500px] flex flex-row items-start justify-start py-0 px-2.5 box-border">
+                    {item.tags.map((tag) => (
+                      <TagBtns content={tag} />
+                    ))}
+                    <TagBtns content="post details" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </section>
       </div>
