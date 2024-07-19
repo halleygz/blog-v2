@@ -92,7 +92,7 @@ const Search = ({ getMeOut }) => {
                     {item.tags.map((tag) => (
                       <TagBtns content={tag} />
                     ))}
-                    <TagBtns content="post details" />
+                    
                   </div>
                 </div>
               ))}
