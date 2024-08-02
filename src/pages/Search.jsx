@@ -74,11 +74,13 @@ const Search = ({ getMeOut }) => {
               <InputFields onChange={(e) => setSearch(e.target.value)} />
             </div>
 
-            {sortedData
+            {
+            sortedData ? 
+            sortedData
               .filter((item) => {
                 return search.toLowerCase() === ""
                   ? item
-                  : item.searchables.toLowerCase().includes(search);
+                  : item?.searchables?.toLowerCase().includes(search);
               })
               .map((item) => (
                 <div
@@ -95,7 +97,7 @@ const Search = ({ getMeOut }) => {
                     
                   </div>
                 </div>
-              ))}
+              )): <></>}
           </div>
         </section>
       </div>
