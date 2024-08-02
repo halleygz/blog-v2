@@ -114,7 +114,7 @@ console.log(blog.comments)
           </div>
           <Buttons isLoading={loading} content="Comment" bgcolor="#939185" />
         </form>
-        {blog?.comments && blog.comments.map((comment)=><CommentDisplay key={comment.uid} comments={comment.comment} userProfile={comment.commenter[0]}/>)}
+        {blog?.comments && blog.comments.map((comment)=><CommentDisplay key={comment.uid} comments={comment.comment} userProfile={comment.commenter[0]}/>).reverse()}
       </div>
       <ChatButton />
     </>
